@@ -1,0 +1,145 @@
+.burger-button {
+  cursor: pointer;
+}
+
+.burger-button:hover {
+  background-color: #ddd;
+}
+
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 550px;
+  height: 100vh;
+  background-color: #DFD4CE;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  padding: 24px;
+}
+.burger-menu__header {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-left: auto;
+  gap: 125px;
+  margin-bottom: 20px;
+}
+.burger-menu__header__title {
+  color: #000;
+  font-family: AnastasiaScript, serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.burger-menu__header__close-btn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  transition: scale 0.3s ease-in-out;
+}
+.burger-menu__header__close-btn img {
+  width: 100%;
+  height: 100%;
+}
+.burger-menu__header__close-btn:hover {
+  scale: 1.2;
+  transition: scale 0.3s ease-in-out;
+}
+
+.burger-menu.open {
+  transform: translateX(0);
+}
+
+.burger-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.burger-menu li {
+  padding: 10px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+}
+
+.burger-menu > div > ul > li > img {
+  width: 20px;
+}
+
+.burger-menu a {
+  text-decoration: none;
+  color: #000;
+  font-family: AnastasiaScript, serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.burger-menu a:hover {
+  color: #BDABA2;
+}
+
+.burger-button {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: #FFF9F4;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.burger-button img {
+  width: 100%;
+  height: 100%;
+}
+
+#add-child-dialog {
+  margin: auto;
+  background-color: #DFD4CE;
+  padding: 36px;
+  width: 500px;
+}
+
+.add-child-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.add-child-dialog__form label {
+  color: #000;
+  font-family: AnastasiaScript, serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+}
+.add-child-dialog__form input, .add-child-dialog__form select {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  border-bottom: #a89084 1px solid;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.56);
+  font-family: AnastasiaScript, serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.add-child-dialog__form button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=burgermenu.css.map */
