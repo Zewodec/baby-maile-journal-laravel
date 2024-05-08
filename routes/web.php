@@ -2,10 +2,20 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChasGriTrackerController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\GoduvanyaTrackerController;
+use App\Http\Controllers\HistoryTrackerController;
+use App\Http\Controllers\PidguznikTrackerController;
 use App\Http\Controllers\PoshtovhsTrackerController;
+use App\Http\Controllers\ProgulyankaTrackerController;
 use App\Http\Controllers\RozvytokDytynyController;
+use App\Http\Controllers\SonTrackerController;
+use App\Http\Controllers\TrackersController;
 use App\Http\Controllers\VagaTrackerController;
+use App\Http\Controllers\ZcidjuvanyaTrackerController;
+use App\Http\Controllers\ZdorovyaTrackerController;
+use App\Http\Controllers\ZrostanyaTrackerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,7 +51,7 @@ Route::prefix('/rozvytok-dytyny')->name('rozvytok-dytyny.')->controller(Rozvytok
 });
 
 
-Route::prefix('/trackers')->name('trackers.')->controller(\App\Http\Controllers\TrackersController::class)->group(function () {
+Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::class)->group(function () {
     Route::get('/', 'trackersPage')->name('index');
 
 
@@ -54,6 +64,16 @@ Route::prefix('/trackers')->name('trackers.')->controller(\App\Http\Controllers\
 
     Route::prefix('/nemovlya')->name('nemovlya.')->group(function () {
         Route::get('/', 'trackerMenuNemovlyaPage')->name('index');
+
+        Route::get('/goduvanya', [GoduvanyaTrackerController::class,'goduvanyaTrackerPage'])->name('goduvanya');
+        Route::get('/zcidjuvanya', [ZcidjuvanyaTrackerController::class,'zcidjuvanyaTrackerPage'])->name('zcidjuvanya');
+        Route::get('/pidguznik', [PidguznikTrackerController::class,'pidguznikTrackerPage'])->name('pidguznik');
+        Route::get('/son', [SonTrackerController::class,'sonTrackerPage'])->name('son');
+        Route::get('/chas-gri', [ChasGriTrackerController::class,'chasGriTrackerPage'])->name('chas-gri');
+        Route::get('/zdorovya', [ZdorovyaTrackerController::class,'zdorovyaTrackerPage'])->name('zdorovya');
+        Route::get('/zrostanya', [ZrostanyaTrackerController::class,'zrostanyaTrackerPage'])->name('zrostanya');
+        Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka');
+        Route::get('/history', [HistoryTrackerController::class,'historyTrackerPage'])->name('history');
     });
 });
 

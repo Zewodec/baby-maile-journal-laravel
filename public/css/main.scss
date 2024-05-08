@@ -1465,6 +1465,11 @@ html {
     padding-top: 36px;
     padding-bottom: 36px;
     @include margin-horizontal;
+
+    &>a {
+        text-decoration: none;
+        width: inherit;
+    }
 }
 
 .tracker-baby-title {
@@ -1479,7 +1484,7 @@ html {
     border-radius: 20px;
     border: 0.2px solid #000;
     background: #BDABA2;
-    width: 30%;
+    width: inherit;
     padding: 14px 36px;
 }
 

@@ -1305,6 +1305,10 @@ html {
   margin-left: 80px;
   margin-right: 80px;
 }
+.tracker-baby-title-div > a {
+  text-decoration: none;
+  width: inherit;
+}
 
 .tracker-baby-title {
   color: #FFF9F4;
@@ -1317,7 +1321,7 @@ html {
   border-radius: 20px;
   border: 0.2px solid #000;
   background: #BDABA2;
-  width: 30%;
+  width: inherit;
   padding: 14px 36px;
 }
 
