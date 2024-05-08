@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="footer__column footer__column_center">
-        <img src="images/logo.png" alt="footer logo"/>
+        <img src="{{URL::asset('images/logo.png')}}" alt="footer logo"/>
         <h3 class="footer__column__big-text">Зробіть своє життя<br>простішим і<br>приємнішим!</h3>
     </div>
 

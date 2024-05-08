@@ -25,7 +25,8 @@ window.onload = function () {
     vagaText.textContent = data.vaga;
 
     // images/rozvitok-dytyny/weeks/001.jpg
-    vagitnistImage.src = `images/rozvitok-dytyny/weeks/${currentWeek.toString().padStart(3, '0')}.jpg`;
+    // {{URL::asset('images/rozvitok-dytyny/weeks/001.jpg')}}
+    vagitnistImage.src =`../images/rozvitok-dytyny/weeks/${currentWeek.toString().padStart(3, '0')}.jpg`;
 
     if (data.maluk === null) {
         malukSection.style.display = 'none';
@@ -123,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
         vagaText.textContent = data.vaga;
 
         // images/rozvitok-dytyny/weeks/001.jpg
-        vagitnistImage.src = `images/rozvitok-dytyny/weeks/${currentWeek.toString().padStart(3, '0')}.jpg`;
+        vagitnistImage.src = `../images/rozvitok-dytyny/weeks/${currentWeek.toString().padStart(3, '0')}.jpg`;
 
         if (data.maluk === null) {
             malukSection.style.display = 'none';
@@ -142,17 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             usefulSection.style.display = 'block';
         }
-
-        // const containers = document.querySelectorAll('.week-info__group__right__section-info__text_expanded');
-        // const expandButtons = document.querySelectorAll('.week-info__group__right__section-info__header__icon-button');
-        //
-        // expandButtons.forEach((button, index) => {
-        //     button.src = 'images/plus.svg';
-        // });
-        //
-        // containers.forEach((container, index) => {
-        //    container.classList.remove('week-info__group__right__section-info__text_expanded');
-        // });
     }
 });
 
@@ -166,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
             containers[index].classList.toggle('week-info__group__right__section-info__text_expanded');
 
             button.src = containers[index].classList.contains('week-info__group__right__section-info__text_expanded')
-                ? 'images/minus.svg'
-                : 'images/plus.svg';
+                ? '../images/minus.svg'
+                : '../images/plus.svg';
 
         });
     });

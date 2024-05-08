@@ -867,7 +867,7 @@ html {
   background-image: url("../images/lapki-tl.png"), url("../images/lapki-br.png");
   background-repeat: no-repeat;
   background-position: top left, bottom right;
-  height: 100%;
+  padding-bottom: 80px;
 }
 
 .sign-up-form, .sign-in-form {

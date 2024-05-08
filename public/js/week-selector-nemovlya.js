@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 3:
             case 4:
             case 5:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w1-5.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w1-5.png';
                 break;
             case 6:
             case 7:
@@ -98,14 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
             case 9:
             case 10:
             case 11:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w6-11.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w6-11.png';
                 break;
             case 12:
             case 13:
             case 14:
             case 15:
             case 16:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w12-16.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w12-16.png';
                 break;
             case 17:
             case 18:
@@ -114,14 +114,14 @@ document.addEventListener('DOMContentLoaded', function () {
             case 21:
             case 22:
             case 23:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w17-23.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w17-23.png';
                 break;
             case 24:
             case 25:
             case 26:
             case 27:
             case 28:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w24-28.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w24-28.png';
                 break;
             case 29:
             case 30:
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 41:
             case 42:
             case 43:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w29-43.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w29-43.png';
                 break;
             case 44:
             case 45:
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 51:
             case 52:
             case 53:
-                nemovlyaImage.src = 'images/rozvitok-dytyny/nemovlya/w44-53.png';
+                nemovlyaImage.src = '../images/rozvitok-dytyny/nemovlya/w44-53.png';
                 break;
         }
     }
@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', function () {
             containers[index].classList.toggle('week-info__group__right__section-info__text_expanded');
 
             button.src = containers[index].classList.contains('week-info__group__right__section-info__text_expanded')
-                ? 'images/minus.svg'
-                : 'images/plus.svg';
+                ? '../images/minus.svg'
+                : '../images/plus.svg';
 
         });
     });
