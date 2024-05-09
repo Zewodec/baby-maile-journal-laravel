@@ -5,10 +5,12 @@
     </div>
     <div id="main-menu" class="main-menu">
         <div class="selected-child">
+            @if(isset($user['selected_children_id']))
             <div class="selected-child__text">
-                <p>Злата</p>
-                <p>(3 місяці)</p>
+                <p>{{$children_name}}Злата</p>
+                <p>{{$children_age_string}}(3 місяці)</p>
             </div>
+            @endif
             <div class="selected-child__action-buttons">
                 <button id="change-child-button" class="selected-child__select-btn"><img
                         src="{{URL::asset('images/icon-arrow-in-circle.svg')}}"/></button>

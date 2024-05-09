@@ -15,6 +15,14 @@ class FamilyController extends Controller
             [
                 'user' => $user,
                 'children' => $user->children,
+                'children_name'=> $user->children->pluck('name'),
+                'children_age_string' => $user->children->pluck('birthday')->map(function ($item) {
+                    $year_diference = $item->diffInYears(now());
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = $year_diference . ' років та ' . $month_diference . ' місяців';
+                    return $text_difference;
+                }),
             ]);
     }
 
