@@ -27,4 +27,9 @@ class Child extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function vagitnistVaga()
+    {
+        return $this->hasMany(VagitnistVaga::class);
+    }
 }

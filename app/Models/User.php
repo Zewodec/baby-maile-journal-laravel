@@ -25,6 +25,7 @@ class User extends Authenticatable
         'parent1_surname',
         'parent2_name',
         'parent2_surname',
+        'selected_children_id',
     ];
 
     /**
@@ -53,5 +54,15 @@ class User extends Authenticatable
     public function children()
     {
         return $this->hasMany(Child::class);
+    }
+
+    public function selectedChildren()
+    {
+        return $this->hasOne(Child::class);
+    }
+
+    public function vagitnistVagas()
+    {
+        return $this->hasMany(VagitnistVaga::class);
     }
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('parent1_surname')->nullable();
             $table->string('parent2_name')->nullable();
             $table->string('parent2_surname')->nullable();
+            $table->integer('selected_children_id')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

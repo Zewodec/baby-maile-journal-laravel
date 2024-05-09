@@ -8,6 +8,9 @@ class VagaTrackerController extends Controller
 {
     function vagaVagitnistTrackerPage()
     {
-        return view('trackers.vagitnist.vaga');
+        $user = auth()->user();
+        $vaga_data = $user->vagitnistVagas()->orderBy('date', 'desc')->get();
+
+        return view('trackers.vagitnist.vaga', ['vaga_data' => $vaga_data]);
     }
 }
