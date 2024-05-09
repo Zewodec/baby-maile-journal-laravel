@@ -16,7 +16,11 @@ use App\Http\Controllers\VagaTrackerController;
 use App\Http\Controllers\ZcidjuvanyaTrackerController;
 use App\Http\Controllers\ZdorovyaTrackerController;
 use App\Http\Controllers\ZrostanyaTrackerController;
+//use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
+//Auth::routes();
 
 
 Route::get('/', function () {
@@ -27,6 +31,9 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
     Route::get('/', 'authPage');
     Route::post('/register', 'register')->name('register');
     Route::post('/login', 'login')->name('login');
+    Route::get('/logout', 'logout')->name('logout')->middleware('auth');
+
+    Route::post('/change-password', 'changePassword')->name('change-password')->middleware('auth');
 });
 
 Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
@@ -37,8 +44,9 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
 });
 
 Route::prefix('/family')->name('family.')->controller(FamilyController::class)->group(function () {
-    Route::get('/', 'familyPage')->name('index');
+    Route::get('/', 'familyPage')->name('index')->middleware('auth');
 
+    Route::post('/add-child', 'addChild')->name('add_child')->middleware('auth');
     //TODO: Save info about childrens and parents
     //TODO: Changing password
 });

@@ -39,7 +39,7 @@
 <form id="sign-in-form" class="sign-in-form hidden" action="{{route('auth.login')}}" method="POST">
     <h1 class="h1_anastasia">Вхід</h1>
     @csrf
-    <input class="input-text input-text_auth" type="text" name="username_or_email"
+    <input class="input-text input-text_auth" type="email" name="email"
            placeholder="Ім'я користувача / Електронна скринька" required>
     <input class="input-text input-text_auth" type="password" name="password" placeholder="Пароль" required>
 
