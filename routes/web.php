@@ -46,6 +46,9 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
 Route::prefix('/family')->name('family.')->controller(FamilyController::class)->group(function () {
     Route::get('/', 'familyPage')->name('index')->middleware('auth');
 
+    Route::get('/select-child/{id}', 'selectChild')->name('select_child')->middleware('auth');
+    Route::delete('/delete-child/{id}', 'deleteChild')->name('delete_child')->middleware('auth');
+
     Route::post('/add-child', 'addChild')->name('add_child')->middleware('auth');
     //TODO: Save info about childrens and parents
     //TODO: Changing password
@@ -67,6 +70,8 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/', 'trackerMenuVagitnistPage')->name('index');
 
         Route::get('/vaga', [VagaTrackerController::class, 'vagaVagitnistTrackerPage'])->name('vaga');
+        Route::post('/add-vaga', [VagaTrackerController::class, 'addVaga'])->name('add-vaga');
+        Route::get('/delete-vaga/{vaga_id}', [VagaTrackerController::class, 'deleteVaga'])->name('delete-vaga');
         Route::get('/poshtovhs', [PoshtovhsTrackerController::class,'poshtovhsVagitnistTrackerPage'])->name('poshtovhs');
     });
 

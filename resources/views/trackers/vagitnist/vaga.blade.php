@@ -8,8 +8,9 @@
 <h1 class="h1_anastasia text-center">Трекер ваги</h1>
 <h3 class="current-vaga">Поточна вага: {{$vaga_data[0]['vaga']}}кг</h3>
 <section class="add-vaga-section">
-    <form class="add-vaga-form">
-        <input class="input-text w100percent" type="text" placeholder="Введіть нову вагу, кг">
+    <form class="add-vaga-form" method="post" action="{{route('trackers.vagitnist.add-vaga')}}">
+        @csrf
+        <input class="input-text w100percent" type="text" name="vaga" placeholder="Введіть нову вагу, кг">
         <button class="action-button2 w25percent">Додати</button>
         <img src="{{URL::asset('images/woman.png')}}">
     </form>
@@ -36,8 +37,8 @@
             @endif
             <td>{{$vaga_data[$i]['week']}}</td>
             <td class="journal-section__table__action-column">
-                <button class="action-button2">Редагувати</button>
-                <button class="action-button2">Видалити</button>
+{{--                <a  class="action-button2">Редагувати</a>--}}
+                <a href="{{route('trackers.vagitnist.delete-vaga', ['vaga_id' => $vaga_data[$i]['id']])}}" class="action-button2">Видалити</a>
             </td>
         </tr>
         @endfor

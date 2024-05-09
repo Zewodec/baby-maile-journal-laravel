@@ -13,6 +13,8 @@ class VagitnistVaga extends Model
         'date',
         'vaga',
         'week',
+        'user_id',
+        'children_id',
     ];
 
     public function user()

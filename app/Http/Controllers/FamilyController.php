@@ -11,18 +11,30 @@ class FamilyController extends Controller
     {
         $user = \auth()->user();
 
+        if ($user->selected_children_id === null) {
+            $child = new Child([
+                'name'=>'test',
+                'surname'=>'test',
+                'sex'=>'male',
+                'birthday'=>'2021-01-01',
+                'vagitnist_date'=>'2024-01-01',
+                'user_id'=>$user->id,
+            ]);
+            $child->save();
+            $user->selected_children_id = $child->id;
+        }
+
         return view('pages.family',
             [
                 'user' => $user,
                 'children' => $user->children,
-                'children_name'=> $user->children->pluck('name'),
-                'children_age_string' => $user->children->pluck('birthday')->map(function ($item) {
-                    $year_diference = $item->diffInYears(now());
+                'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
+                'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
                     $month_diference = $item->diffInMonths(now());
 
-                    $text_difference = $year_diference . ' років та ' . $month_diference . ' місяців';
+                    $text_difference = round($month_diference). "m";
                     return $text_difference;
-                }),
+                })->first() ?? null,
             ]);
     }
 
@@ -38,6 +50,15 @@ class FamilyController extends Controller
         $child->save();
 
         return redirect()->route('family.index');
+    }
 
+    public function selectChild($id)
+    {
+        $user = \auth()->user();
+        $user->selected_children_id = $id;
+        $user->save();
+
+        return redirect()->route('family.index');
     }
 }
+

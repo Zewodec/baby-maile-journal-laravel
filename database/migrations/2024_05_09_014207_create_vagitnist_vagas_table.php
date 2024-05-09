@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vagitnist_vagas', function (Blueprint $table) {
             $table->id();
             $table->double('vaga');
-            $table->date('date');
+            $table->dateTime('date');
             $table->integer('week');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('children_id')->constrained('children');

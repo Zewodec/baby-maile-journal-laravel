@@ -16,6 +16,7 @@ class Child extends Model
         'sex',
         'birthday',
         'vagitnist_date',
+        'user_id',
         ];
 
     protected $casts = [

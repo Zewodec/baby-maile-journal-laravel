@@ -13,12 +13,12 @@
 
             <div class="tracker-vagitnosti-section__item__text-group__info">
                 <p class="tracker-vagitnosti-section__item__text-group__info__head">Поточна вага</p>
-                <p class="tracker-vagitnosti-section__item__text-group__info__text">(не вказано) кг</p>
+                <p class="tracker-vagitnosti-section__item__text-group__info__text">{{$vaga}} кг</p>
             </div>
 
             <div class="tracker-vagitnosti-section__item__text-group__info">
                 <p class="tracker-vagitnosti-section__item__text-group__info__head">Надбавка</p>
-                <p class="tracker-vagitnosti-section__item__text-group__info__text">(не вказано) кг</p>
+                <p class="tracker-vagitnosti-section__item__text-group__info__text">{{$nadbavka}} кг</p>
             </div>
         </div>
         <img class="tracker-vagitnosti-section__item__text-group__image" src="{{URL::asset('images/woman.png')}}" alt="woman">

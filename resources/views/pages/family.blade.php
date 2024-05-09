@@ -27,7 +27,7 @@
                 <div class="child__item__fields">
                     <input name="child_name" class="input-text" type="text" placeholder="Ім'я дитини" value="{{$child['name']}}">
                     <input name="child_surname" class="input-text" type="text" placeholder="Прізвище дитини" value="{{$child['surname']}}">
-                    <input name="child_birthday" class="input-text" type="date" placeholder="Дата народження" value="{{$child['birthday']}}">
+                    <input name="child_birthday" class="input-text" type="date" placeholder="Дата народження" value="{{$child['birthday']->format('Y-m-d')}}">
                     <select name="child_sex" class="input-text">
                         <option value="male" @if($child['sex']=='male') selected @endif>Чоловіча</option>
                         <option value="female" @if($child['sex']=='female') selected @endif>Жіноча</option>
