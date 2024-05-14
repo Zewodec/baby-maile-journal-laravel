@@ -73,6 +73,10 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::post('/add-vaga', [VagaTrackerController::class, 'addVaga'])->name('add-vaga');
         Route::get('/delete-vaga/{vaga_id}', [VagaTrackerController::class, 'deleteVaga'])->name('delete-vaga');
         Route::get('/poshtovhs', [PoshtovhsTrackerController::class,'poshtovhsVagitnistTrackerPage'])->name('poshtovhs');
+        Route::get('/poshtovhs/{session_id}/', [PoshtovhsTrackerController::class,'poshtovhsVagitnistDetailsTrackerPage'])->name('poshtovhs_details');
+        Route::get('/poshtovhs/{session_id}/{poshtovhs_id}/delete', [PoshtovhsTrackerController::class,'poshtovhsVagitnistDetailsDeleteItemTrackerPage'])->name('poshtovhs_details_delete');
+        Route::post('/add-poshtovhs', [PoshtovhsTrackerController::class,'addPoshtovhs'])->name('add_poshtovhs');
+        Route::get('/delete-poshtovhs/{session_id}', [PoshtovhsTrackerController::class,'deletePoshtovhs'])->name('delete_poshtovhs');
     });
 
     Route::prefix('/nemovlya')->name('nemovlya.')->group(function () {

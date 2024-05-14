@@ -40,7 +40,7 @@
     <h1 class="h1_anastasia">Вхід</h1>
     @csrf
     <input class="input-text input-text_auth" type="email" name="email"
-           placeholder="Ім'я користувача / Електронна скринька" required>
+           placeholder="Електронна скринька" required>
     <input class="input-text input-text_auth" type="password" name="password" placeholder="Пароль" required>
 
     <button class="action-button" type="submit">Увійти</button>

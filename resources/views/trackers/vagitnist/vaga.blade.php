@@ -6,7 +6,7 @@
 
 @section('content')
 <h1 class="h1_anastasia text-center">Трекер ваги</h1>
-<h3 class="current-vaga">Поточна вага: {{$vaga_data[0]['vaga']}}кг</h3>
+<h3 class="current-vaga">Поточна вага: {{$vaga_data[0]['vaga'] ?? 0}}кг</h3>
 <section class="add-vaga-section">
     <form class="add-vaga-form" method="post" action="{{route('trackers.vagitnist.add-vaga')}}">
         @csrf

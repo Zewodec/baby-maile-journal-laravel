@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ChildSeeder::class,
             VagitnistVagaSeeder::class,
+            PoshtovhsSeeder::class,
         ]);
     }
 }

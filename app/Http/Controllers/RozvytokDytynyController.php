@@ -8,16 +8,52 @@ class RozvytokDytynyController extends Controller
 {
     public function rozvytokDytynyPage()
     {
-        return view('pages.rozvytok-dytyny');
+        $user = auth()->user();
+
+        return view('pages.rozvytok-dytyny', [
+            'user' => $user,
+            'children' => $user->children,
+            'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
+            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = round($month_diference). "m";
+                    return $text_difference;
+                })->first() ?? null,
+        ]);
     }
 
     public function vagitnistPage()
     {
-        return view('pages.rozvytok-dytyny.vagitnist');
+        $user = auth()->user();
+
+        return view('pages.rozvytok-dytyny.vagitnist', [
+            'user' => $user,
+            'children' => $user->children,
+            'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
+            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = round($month_diference). "m";
+                    return $text_difference;
+                })->first() ?? null,
+        ]);
     }
 
     public function nemovlyaPage()
     {
-        return view('pages.rozvytok-dytyny.nemovlya');
+        $user = auth()->user();
+
+        return view('pages.rozvytok-dytyny.nemovlya', [
+            'user' => $user,
+            'children' => $user->children,
+            'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
+            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = round($month_diference). "m";
+                    return $text_difference;
+                })->first() ?? null,
+        ]);
     }
 }

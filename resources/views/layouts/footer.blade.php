@@ -28,13 +28,13 @@
         <label>
             <textarea id="textarea-help" class="footer__column__textarea" placeholder="Пишіть тут..."></textarea>
         </label>
-        <a id="sendHelpEmail" href="mailto:baby-mile-journal@theuniverse.cx.ua?subject=Допомога&body=" class="action-button w100percent">Написати</a>
+        <a id="sendHelpEmail" href="https://mail.google.com/mail/?fs=1&tf=cm&source=mailto&su=Допомога&to=baby-mile-journal@theuniverse.cx.ua&body=" class="action-button w100percent">Написати</a>
     </div>
 
     <script>
         document.getElementById('sendHelpEmail').addEventListener('click', function() {
             let textareaValue = document.getElementById('textarea-help').value;
-            this.href = "mailto:baby-mile-journal@theuniverse.cx.ua?subject=Допомога&body=" + textareaValue;
+            this.href = "https://mail.google.com/mail/?fs=1&tf=cm&source=mailto&su=Допомога&to=baby-mile-journal@theuniverse.cx.ua&body=" + textareaValue;
         });
     </script>
 </footer>

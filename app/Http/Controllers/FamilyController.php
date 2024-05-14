@@ -60,5 +60,13 @@ class FamilyController extends Controller
 
         return redirect()->route('family.index');
     }
+
+//    public function deleteChild($id)
+//    {
+//        $child = Child::find($id);
+//        $child->delete();
+//
+//        return redirect()->route('family.index');
+//    }
 }
 
