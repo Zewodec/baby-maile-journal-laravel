@@ -17,15 +17,20 @@
 
     <h1 class="h1_anastasia text-center">Зростання</h1>
     @if(session('error'))
-        <div class="alert alert-danger text-center">{{session('error')}}</div>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="alert alert-danger w-25 text-center">{{session('error')}}</div>
+        </div>
     @endif
     @if(session('success'))
-        <div class="alert alert-success text-center">{{session('success')}}</div>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="alert alert-success w-25 text-center">{{session('success')}}</div>
+        </div>
     @endif
     <form action="{{route('trackers.nemovlya.zrostanya.save')}}" method="post">
         @csrf
         <section class="setup-time-section">
-            <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час" name="datetime">
+            <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час"
+                   name="datetime">
             <button id="setup-time" class="action-button3" type="button">Встановити час</button>
         </section>
 
