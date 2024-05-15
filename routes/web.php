@@ -83,14 +83,24 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/', 'trackerMenuNemovlyaPage')->name('index');
 
         Route::get('/goduvanya', [GoduvanyaTrackerController::class,'goduvanyaTrackerPage'])->name('goduvanya');
+
         Route::get('/zcidjuvanya', [ZcidjuvanyaTrackerController::class,'zcidjuvanyaTrackerPage'])->name('zcidjuvanya');
+
         Route::get('/pidguznik', [PidguznikTrackerController::class,'pidguznikTrackerPage'])->name('pidguznik');
+
         Route::get('/son', [SonTrackerController::class,'sonTrackerPage'])->name('son');
+        Route::post('/son', [SonTrackerController::class,'sonTrackerPage'])->name('son');
+
         Route::get('/chas-gri', [ChasGriTrackerController::class,'chasGriTrackerPage'])->name('chas-gri');
+
         Route::get('/zdorovya', [ZdorovyaTrackerController::class,'zdorovyaTrackerPage'])->name('zdorovya');
+
         Route::get('/zrostanya', [ZrostanyaTrackerController::class,'zrostanyaTrackerPage'])->name('zrostanya');
+
         Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka');
+
         Route::get('/history', [HistoryTrackerController::class,'historyTrackerPage'])->name('history');
+
     });
 });
 
