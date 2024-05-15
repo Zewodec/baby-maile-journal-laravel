@@ -84,7 +84,6 @@
 
             function stopTimer() {
                 totalTime = Date.now() - startTime;
-                trivalistTimeText.textContent = Math.floor(totalTime / (1000 * 60)) % 60 + " хв";
                 clearInterval(timerInterval);
             }
 

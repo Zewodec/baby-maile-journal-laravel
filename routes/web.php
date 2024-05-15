@@ -59,7 +59,7 @@ Route::prefix('/rozvytok-dytyny')->name('rozvytok-dytyny.')->controller(Rozvytok
 
     Route::get('/vagitnist', 'vagitnistPage')->name('vagitnist');
     Route::get('/nemovlya', 'nemovlyaPage')->name('nemovlya');
-});
+})->middleware('auth');
 
 
 Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::class)->group(function () {
@@ -97,7 +97,8 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
 
         Route::get('/zrostanya', [ZrostanyaTrackerController::class,'zrostanyaTrackerPage'])->name('zrostanya');
 
-        Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka');
+        Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka')->middleware('auth');
+        Route::post('/progulyanka/save', [ProgulyankaTrackerController::class,'traclProgulyanka'])->name('progulyanka.save')->middleware('auth');
 
         Route::get('/history', [HistoryTrackerController::class,'historyTrackerPage'])->name('history');
 

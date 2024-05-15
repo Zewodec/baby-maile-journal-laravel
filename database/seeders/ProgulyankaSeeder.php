@@ -2,27 +2,26 @@
 
 namespace Database\Seeders;
 
-use App\Models\Son;
-use App\Models\User;
+use App\Models\Progulyanka;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SonSeeder extends Seeder
+class ProgulyankaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $sonCount = rand(2, 6);
+        $progulyankaCount = rand(2, 6);
 
-        Son::factory()->count($sonCount)->create([
+        Progulyanka::factory()->count($progulyankaCount)->create([
             'user_id' => 1,
             'child_id' => 1,
         ]);
 
 
-        Son::factory()->create([
+        Progulyanka::factory()->create([
             'user_id' => 1,
             'child_id' => 1,
             'time' => now(),

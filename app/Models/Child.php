@@ -38,4 +38,9 @@ class Child extends Model
     {
         return $this->hasMany(Son::class);
     }
+
+    public function progulyanka()
+    {
+        return $this->hasMany(Progulyanka::class);
+    }
 }

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             VagitnistVagaSeeder::class,
             PoshtovhsSeeder::class,
             SonSeeder::class,
+            ProgulyankaSeeder::class,
         ]);
     }
 }
