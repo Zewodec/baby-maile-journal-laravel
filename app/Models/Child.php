@@ -33,4 +33,9 @@ class Child extends Model
     {
         return $this->hasMany(VagitnistVaga::class);
     }
+
+    public function son()
+    {
+        return $this->hasMany(Son::class);
+    }
 }

@@ -4,6 +4,46 @@
 
 @section('body-classes', 'decorations')
 
+@section('head')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Intercept form submission
+            $('#son-form').submit(function (event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Serialize form data
+                // var formData = $(this).serialize();
+                var formData = {
+                    _token: '{{ csrf_token() }}',
+                    son_time: totalTime / 1000,
+                    son_date: $('#date_time_input').val()
+                }
+
+                // Send AJAX request
+                $.ajax({
+                    url: '{{route('trackers.nemovlya.son.save')}}', // URL to submit the form data
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        // Handle success response
+                        console.log('Form submitted successfully');
+                        // You can display a success message or perform other actions here
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle errors
+                        console.error('Form submission failed:', error);
+                    }
+                });
+
+                // reboot page
+                location.reload();
+            });
+        });
+    </script>
+@endsection
+
 @section('content')
 
     <h1 class="h1_anastasia text-center">Сон</h1>
@@ -18,7 +58,7 @@
     <section class="goduvanya-grudy-section">
         <div class="total-time">
             <h5>Тривалість:</h5>
-            <h5 id="trivalist-time-text">0 с</h5>
+            <h5 id="trivalist-time-text">{{$today_minutes ?? 0}} хв</h5>
         </div>
 
         <div class="button-group">
@@ -33,10 +73,9 @@
             const currentCountTimer = document.getElementById('current-count-timer');
             const trivalistTimeText = document.getElementById('trivalist-time-text');
 
-            let totalTime = 0;
-
             let startTime;
             let timerInterval;
+            let totalTime = 0;
 
             function startTimer() {
                 startTime = Date.now();
@@ -44,7 +83,7 @@
             }
 
             function stopTimer() {
-                totalTime += Date.now() - startTime;
+                totalTime = Date.now() - startTime;
                 trivalistTimeText.textContent = Math.floor(totalTime / (1000 * 60)) % 60 + " хв";
                 clearInterval(timerInterval);
             }
@@ -69,6 +108,8 @@
 
         </script>
 
-        <button class="action-button3">Зберегти</button>
+        <form id="son-form" action="{{route("trackers.nemovlya.son.save")}}" method="post">
+            <button class="action-button3">Зберегти</button>
+        </form>
     </section>
 @endsection
