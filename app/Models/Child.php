@@ -43,4 +43,9 @@ class Child extends Model
     {
         return $this->hasMany(Progulyanka::class);
     }
+
+    public function zrostanya()
+    {
+        return $this->hasMany(Zrostanya::class);
+    }
 }

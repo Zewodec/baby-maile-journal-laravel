@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PoshtovhsSeeder::class,
             SonSeeder::class,
             ProgulyankaSeeder::class,
+            ZrostanyaSeeder::class,
         ]);
     }
 }

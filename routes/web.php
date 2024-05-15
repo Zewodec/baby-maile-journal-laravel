@@ -96,6 +96,7 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/zdorovya', [ZdorovyaTrackerController::class,'zdorovyaTrackerPage'])->name('zdorovya');
 
         Route::get('/zrostanya', [ZrostanyaTrackerController::class,'zrostanyaTrackerPage'])->name('zrostanya');
+        Route::post('/zrostanya/save', [ZrostanyaTrackerController::class,'trackZrostanya'])->name('zrostanya.save');
 
         Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka')->middleware('auth');
         Route::post('/progulyanka/save', [ProgulyankaTrackerController::class,'traclProgulyanka'])->name('progulyanka.save')->middleware('auth');
