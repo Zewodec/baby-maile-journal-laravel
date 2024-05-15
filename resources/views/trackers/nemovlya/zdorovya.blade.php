@@ -32,10 +32,11 @@
 
     <section id="temperature-section" class="goduvanya-grudy-section">
         <form method="post" action="{{route("trackers.nemovlya.zdorovya.save.temp")}}">
+            @csrf
             <section class="setup-time-section">
                 <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час"
                        name="datetime">
-                <button id="setup-time" class="action-button3">Встановити час</button>
+                <button id="setup-time" class="action-button3" type="button">Встановити час</button>
             </section>
 
             <label class="amount-slider">
@@ -59,21 +60,22 @@
 
     <section id="liky-section" class="goduvanya-plashechka-section hidden">
         <form method="post" action="{{route("trackers.nemovlya.zdorovya.save.liky")}}">
+            @csrf
             <section class="setup-time-section">
                 <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час"
                        name="datetime">
-                <button id="setup-time" class="action-button3">Встановити час</button>
+                <button id="setup-time" class="action-button3" type="button">Встановити час</button>
             </section>
 
             <div class="ingredients-selection">
                 <h3 class="ingredients-selection__text">Типи ліків:</h3>
                 <div class="ingredients-selection__buttons-group">
                     <label>
-                        <input type="radio" name="liky-type" onclick="showMedicineField()" value="medicaments">
+                        <input type="radio" name="liky_type" onclick="showMedicineField()" value="medicaments">
                         медикаменти
                     </label>
                     <label>
-                        <input type="radio" name="liky-type" onclick="showVacineField()" value="vacine">
+                        <input type="radio" name="liky_type" onclick="showVacineField()" value="vacine">
                         вакцина
                     </label>
                 </div>
@@ -117,10 +119,11 @@
 
     <section id="symptomes-section" class="goduvanya-tverda-section hidden">
         <form method="post" action="{{route("trackers.nemovlya.zdorovya.save.symptomes")}}">
+            @csrf
             <section class="setup-time-section">
                 <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час"
                        name="datetime">
-                <button id="setup-time" class="action-button3">Встановити час</button>
+                <button id="setup-time" class="action-button3" type="button">Встановити час</button>
             </section>
 
             <div class="liky-section__vacine">

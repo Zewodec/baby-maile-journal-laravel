@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             ProgulyankaSeeder::class,
             ZrostanyaSeeder::class,
             ZcidjuvanyaSeeder::class,
+            TemperatureZdorovyaSeeder::class,
+            SymptomesZdorovyaSeeder::class,
+            LikyZdorovyaSeeder::class,
         ]);
     }
 }
