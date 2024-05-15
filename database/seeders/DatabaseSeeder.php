@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SonSeeder::class,
             ProgulyankaSeeder::class,
             ZrostanyaSeeder::class,
+            ZcidjuvanyaSeeder::class,
         ]);
     }
 }

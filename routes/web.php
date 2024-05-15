@@ -85,6 +85,7 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/goduvanya', [GoduvanyaTrackerController::class,'goduvanyaTrackerPage'])->name('goduvanya');
 
         Route::get('/zcidjuvanya', [ZcidjuvanyaTrackerController::class,'zcidjuvanyaTrackerPage'])->name('zcidjuvanya');
+        Route::post('/zcidjuvanya/save', [ZcidjuvanyaTrackerController::class,'trackZcidjuvanya'])->name('zcidjuvanya.save');
 
         Route::get('/pidguznik', [PidguznikTrackerController::class,'pidguznikTrackerPage'])->name('pidguznik');
 
