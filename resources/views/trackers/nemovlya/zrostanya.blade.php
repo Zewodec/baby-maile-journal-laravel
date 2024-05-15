@@ -17,14 +17,10 @@
 
     <h1 class="h1_anastasia text-center">Зростання</h1>
     @if(session('error'))
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="alert alert-danger w-25 text-center">{{session('error')}}</div>
-        </div>
+        <div class="alert alert-danger w-25 text-center ml-5">{{session('error')}}</div>
     @endif
     @if(session('success'))
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="alert alert-success w-25 text-center">{{session('success')}}</div>
-        </div>
+        <div class="alert alert-success w-25 text-center ml-5">{{session('success')}}</div>
     @endif
     <form action="{{route('trackers.nemovlya.zrostanya.save')}}" method="post">
         @csrf
