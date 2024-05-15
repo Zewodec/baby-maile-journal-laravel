@@ -95,6 +95,10 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/chas-gri', [ChasGriTrackerController::class,'chasGriTrackerPage'])->name('chas-gri');
 
         Route::get('/zdorovya', [ZdorovyaTrackerController::class,'zdorovyaTrackerPage'])->name('zdorovya');
+        Route::post('/zdorovya/save/temp', [ZdorovyaTrackerController::class,'trackTemp'])->name('zdorovya.save.temp');
+        Route::post('/zdorovya/save/liky', [ZdorovyaTrackerController::class,'trackliky'])->name('zdorovya.save.liky');
+        Route::post('/zdorovya/save/symptomes', [ZdorovyaTrackerController::class,'trackSymptomes'])->name('zdorovya.save.symptomes');
+
 
         Route::get('/zrostanya', [ZrostanyaTrackerController::class,'zrostanyaTrackerPage'])->name('zrostanya');
         Route::post('/zrostanya/save', [ZrostanyaTrackerController::class,'trackZrostanya'])->name('zrostanya.save');
