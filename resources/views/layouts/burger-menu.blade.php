@@ -16,7 +16,7 @@
                         src="{{URL::asset('images/icon-arrow-in-circle.svg')}}"/></button>
             </div>
         </div>
-        <ul>
+        <ul style="overflow-y: scroll; height: 500px">
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
                 <a href="{{route('family.index')}}">Сім'я</a>
@@ -53,7 +53,7 @@
         </ul>
     </div>
 
-    <div id="select-child-menu" class="selection-child-menu hidden">
+    <div id="select-child-menu" class ="selection-child-menu hidden">
         @foreach($children as $child)
             <div class="selected-child">
                 <a href="{{route('family.select_child', $child->id)}}">
