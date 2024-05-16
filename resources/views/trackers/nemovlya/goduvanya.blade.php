@@ -57,7 +57,7 @@
 
             <input type="hidden" name="left_time" id="left_time_field">
             <input type="hidden" name="right_time" id="right_time_field">
-            <input type="hidden" name="goduvanya_type" value="grudy">
+            <input type="hidden" name="goduvanya_type" value="Груди">
 
 
             <button class="action-button3">Зберегти</button>
