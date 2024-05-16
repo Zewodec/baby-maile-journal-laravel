@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             SymptomesZdorovyaSeeder::class,
             LikyZdorovyaSeeder::class,
             ChasGriSeeder::class,
+            GoduvanyaGrudySeeder::class,
         ]);
     }
 }

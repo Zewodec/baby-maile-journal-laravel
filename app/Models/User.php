@@ -70,4 +70,44 @@ class User extends Authenticatable
     {
         return $this->hasMany(Poshtovhs::class);
     }
+
+    public function chasgris()
+    {
+        return $this->hasMany(ChasGri::class);
+    }
+
+    public function temperatureZdorovyas()
+    {
+        return $this->hasMany(TemperatureZdorovya::class);
+    }
+
+    public function symptomesZdorovyas()
+    {
+        return $this->hasMany(SymptomesZdorovya::class);
+    }
+
+    public function progulyankas()
+    {
+        return $this->hasMany(Progulyanka::class);
+    }
+
+    public function likyZdorovya()
+    {
+        return $this->hasMany(LikyZdorovya::class);
+    }
+
+    public function son()
+    {
+        return $this->hasMany(Son::class);
+    }
+
+    public function zcidjuvanyas()
+    {
+        return $this->hasMany(Zcidjuvanya::class);
+    }
+
+    public function zrostanyas()
+    {
+        return $this->hasMany(Zrostanya::class);
+    }
 }

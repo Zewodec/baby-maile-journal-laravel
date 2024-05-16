@@ -83,6 +83,9 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/', 'trackerMenuNemovlyaPage')->name('index');
 
         Route::get('/goduvanya', [GoduvanyaTrackerController::class,'goduvanyaTrackerPage'])->name('goduvanya');
+        Route::post('/goduvanya/save/grudy', [GoduvanyaTrackerController::class,'trackGoduvanyaGrudy'])->name('goduvanya.save.grudy');
+        Route::post('/goduvanya/save/plashechka', [GoduvanyaTrackerController::class,'trackGoduvanyaPlashechka'])->name('goduvanya.save.plashechka');
+        Route::post('/goduvanya/save/tverda', [GoduvanyaTrackerController::class,'trackGoduvanyaTverda'])->name('goduvanya.save.tverda');
 
         Route::get('/zcidjuvanya', [ZcidjuvanyaTrackerController::class,'zcidjuvanyaTrackerPage'])->name('zcidjuvanya');
         Route::post('/zcidjuvanya/save', [ZcidjuvanyaTrackerController::class,'trackZcidjuvanya'])->name('zcidjuvanya.save');

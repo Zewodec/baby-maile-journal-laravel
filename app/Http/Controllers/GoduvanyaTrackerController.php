@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GoduvanyaGrudy;
 use Illuminate\Http\Request;
 
 class GoduvanyaTrackerController extends Controller
@@ -22,4 +23,40 @@ class GoduvanyaTrackerController extends Controller
                 })->first() ?? null,
         ]);
     }
+
+    function trackGoduvanyaGrudy(Request $request)
+    {
+        $datatime = $request->datetime ?? now();
+        $left_time = $request->left_time ?? 0;
+        $right_time = $request->right_time ?? 0;
+        $goduvanya_type = $request->goduvanya_type;
+
+        $user = auth()->user();
+
+        $goduvanya_grudy = new GoduvanyaGrudy([
+            'datetime' => $datatime,
+            'left_time' => $left_time,
+            'right_time' => $right_time,
+            'goduvanya_type' => $goduvanya_type,
+            'user_id' => $user->id,
+            'child_id' => $user->selected_children_id,
+        ]);
+
+        $goduvanya_grudy->save();
+
+        return redirect()->back()->with('success', 'Дані успішно збережені');
+    }
+
+    function trackGoduvanyaPlashechka(Request $request)
+    {
+        dd($request->all());
+
+
+    }
+
+    function trackGoduvanyaTverda(Request $request)
+    {
+        dd($request->all());
+    }
+
 }
