@@ -4,13 +4,29 @@
 
 @section('body-classes', 'decorations')
 
+@section('head')
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #FFF9F4;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <h1 class="h1_anastasia text-center">Час гри</h1>
-
+    @if(session('error'))
+        <div class="alert alert-danger w-25 text-center ml-5">{{session('error')}}</div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success w-25 text-center ml-5">{{session('success')}}</div>
+    @endif
+<form method="post" action="{{route("trackers.nemovlya.chas-gri.save")}}">
+    @csrf
     <section class="setup-time-section">
         <input id="date_time_input" class="input-text" type="datetime-local" placeholder="Дата та час" name="datetime">
-        <button id="setup-time" class="action-button3">Встановити час</button>
+        <button id="setup-time" class="action-button3" type="button">Встановити час</button>
     </section>
 
     <script src="{{URL::asset('js/set-now-field.js')}}"></script>
@@ -115,15 +131,19 @@
 
         <div class="button-group">
             <div class="button-group__column">
-                <button id="timer-manager-button" class="button-group__column__button">Старт</button>
+                <button id="timer-manager-button" class="button-group__column__button" type="button">Старт</button>
                 <p id="current-count-timer" class="button-group__column__timer">00:00:00</p>
             </div>
         </div>
+
+        <input id="time_field" type="text" name="tracked_time" hidden>
 
         <script>
             const timerManagerButton = document.getElementById('timer-manager-button');
             const currentCountTimer = document.getElementById('current-count-timer');
             const trivalistTimeText = document.getElementById('trivalist-time-text');
+
+            const timeField = document.getElementById('time_field');
 
             let startTime;
             let timerInterval;
@@ -136,6 +156,7 @@
 
             function stopTimer() {
                 totalTime = Date.now() - startTime;
+                timeField.value = currentCountTimer.textContent;
                 clearInterval(timerInterval);
             }
 
@@ -161,4 +182,5 @@
 
         <button class="action-button3">Зберегти</button>
     </section>
+</form>
 @endsection

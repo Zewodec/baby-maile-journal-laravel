@@ -93,6 +93,7 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::post('/son/save', [SonTrackerController::class,'trackSon'])->name('son.save');
 
         Route::get('/chas-gri', [ChasGriTrackerController::class,'chasGriTrackerPage'])->name('chas-gri');
+        Route::post('/chas-gri/save', [ChasGriTrackerController::class,'trackChasGri'])->name('chas-gri.save');
 
         Route::get('/zdorovya', [ZdorovyaTrackerController::class,'zdorovyaTrackerPage'])->name('zdorovya');
         Route::post('/zdorovya/save/temp', [ZdorovyaTrackerController::class,'trackTemp'])->name('zdorovya.save.temp');

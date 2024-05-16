@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChasGri;
 use Illuminate\Http\Request;
 
 class ChasGriTrackerController extends Controller
@@ -21,5 +22,30 @@ class ChasGriTrackerController extends Controller
                     return $text_difference;
                 })->first() ?? null,
         ]);
+    }
+
+    function trackChasGri(Request $request)
+    {
+        $date = $request->datetime ?? now();
+        $activity = $request['child-activity-radio-group'];
+        $tracked_time = $request->tracked_time ?? "00:00:00";
+
+        if ($activity == null){
+            return redirect()->back()->with('error', 'Виберіть активність');
+        }
+
+        $user = auth()->user();
+
+        $chasGri = new ChasGri([
+            'datetime' => $date,
+            'activity' => $activity,
+            'tracked_time' => $tracked_time,
+            'user_id' => $user->id,
+            'child_id' => $user->selected_children_id,
+        ]);
+
+        $chasGri->save();
+
+        return redirect()->back()->with('success', 'Дані успішно збережені');
     }
 }

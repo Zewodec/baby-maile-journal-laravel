@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             TemperatureZdorovyaSeeder::class,
             SymptomesZdorovyaSeeder::class,
             LikyZdorovyaSeeder::class,
+            ChasGriSeeder::class,
         ]);
     }
 }
