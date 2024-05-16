@@ -48,4 +48,55 @@ class Child extends Model
     {
         return $this->hasMany(Zrostanya::class);
     }
+
+    public function chasGri()
+    {
+        return $this->hasMany(ChasGri::class);
+    }
+
+    public function pidguznik()
+    {
+        return $this->hasMany(Pidguznik::class);
+    }
+
+    public function zcidjuvanya()
+    {
+        return $this->hasMany(Zcidjuvanya::class);
+    }
+
+    public function godivanyaGrudy()
+    {
+        return $this->hasMany(GoduvanyaGrudy::class);
+    }
+
+    public function goduvanyaPlashechka()
+    {
+        return $this->hasMany(GoduvanyaPlashechka::class);
+    }
+
+    public function goduvanyaTverda()
+    {
+        return $this->hasMany(GoduvanyaTverda::class);
+    }
+
+    public function likyZdorovya()
+    {
+        return $this->hasMany(LikyZdorovya::class);
+    }
+
+    public function poshtovhs()
+    {
+        return $this->hasMany(Poshtovhs::class);
+    }
+
+    public function symptomesZdorovya()
+    {
+        return $this->hasMany(SymptomesZdorovya::class);
+    }
+
+    public function temperatureZdorovya()
+    {
+        return $this->hasMany(TemperatureZdorovya::class);
+    }
+
 }
