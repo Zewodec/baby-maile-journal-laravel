@@ -110,4 +110,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Zrostanya::class);
     }
+
+    public function pidguzniks()
+    {
+        return $this->hasMany(Pidguznik::class);
+    }
+
+    public function goduvanyaGrudy()
+    {
+        return $this->hasMany(GoduvanyaGrudy::class);
+    }
+
+    public function goduvanyaPlashechkas()
+    {
+        return $this->hasMany(GoduvanyaPlashechka::class);
+    }
+
+    public function goduvanyaTverdas()
+    {
+        return $this->hasMany(GoduvanyaTverda::class);
+    }
+
 }
