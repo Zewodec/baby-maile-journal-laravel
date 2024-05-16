@@ -1758,4 +1758,103 @@ html {
   align-items: center;
 }
 
+.add-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+.add-event-form__label {
+  color: #AEA29C;
+  text-align: justify;
+  font-family: "Parangon 510C", serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.form-text-area {
+  border-radius: 5px;
+  border: 0.2px solid #000;
+  background: #F2E9E4;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.25);
+  font-family: "Parangon 510C", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.image-gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+}
+.image-gallery__image {
+  height: 300px;
+  width: 300px;
+  background-color: #BDABA2;
+  border-radius: 20px;
+}
+
+.important-events-group {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+.important-events-group__item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: start;
+  border-radius: 20px;
+  background: #BDABA2;
+  padding: 24px;
+  width: 400px;
+  height: 500px;
+}
+.important-events-group__item__image {
+  width: 100%;
+  border-radius: 20px;
+  height: 250px;
+  object-fit: cover;
+}
+.important-events-group__item__title {
+  color: #FFF9F4;
+  font-family: "Parangon 510C", serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.important-events-group__item__description {
+  color: #FFF9F4;
+  font-family: "Parangon 510C", serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.important-events-group__item__text {
+  color: #FFF9F4;
+  font-family: "Parangon 510C", serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  overflow-y: auto;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -39,7 +39,7 @@
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
-                <a href="#">Важливі події</a>
+                <a href="{{route("important_events.index")}}">Важливі події</a>
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>

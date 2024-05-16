@@ -131,4 +131,8 @@ class User extends Authenticatable
         return $this->hasMany(GoduvanyaTverda::class);
     }
 
+    public function importantEvents()
+    {
+        return $this->hasMany(ImportantEvents::class);
+    }
 }

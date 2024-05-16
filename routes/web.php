@@ -6,6 +6,7 @@ use App\Http\Controllers\ChasGriTrackerController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\GoduvanyaTrackerController;
 use App\Http\Controllers\HistoryTrackerController;
+use App\Http\Controllers\ImportantEventsController;
 use App\Http\Controllers\PidguznikTrackerController;
 use App\Http\Controllers\PoshtovhsTrackerController;
 use App\Http\Controllers\ProgulyankaTrackerController;
@@ -114,6 +115,13 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/history', [HistoryTrackerController::class,'historyTrackerPage'])->name('history');
 
     });
+});
+
+Route::prefix('/important_events')->name('important_events.')->controller(ImportantEventsController::class)->group(function () {
+    Route::get('/', 'eventsPage')->name('index');
+
+    Route::get('/add', 'addEventPage')->name('add');
+    Route::post('/add', 'addEventRequest')->name('add');
 });
 
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {
