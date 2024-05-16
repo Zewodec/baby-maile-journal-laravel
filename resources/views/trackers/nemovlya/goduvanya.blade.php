@@ -77,15 +77,15 @@
                 <h3 class="ingredients-selection__text">Інгрідієнти:</h3>
                 <div class="ingredients-selection__buttons-group">
                     <label>
-                        <input type="radio" name="plashechka-type" value="Зціджене" checked>
+                        <input type="radio" name="plashechka_type" value="Зціджене" checked>
                         Зціджене
                     </label>
                     <label>
-                        <input type="radio" name="plashechka-type" value="Суміш">
+                        <input type="radio" name="plashechka_type" value="Суміш">
                         Суміш
                     </label>
                     <label>
-                        <input type="radio" name="plashechka-type" value="інше">
+                        <input type="radio" name="plashechka_type" value="інше">
                         інше
                     </label>
                 </div>

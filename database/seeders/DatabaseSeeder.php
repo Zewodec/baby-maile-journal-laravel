@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             LikyZdorovyaSeeder::class,
             ChasGriSeeder::class,
             GoduvanyaGrudySeeder::class,
+            GoduvanyaPlashechkaSeeder::class,
         ]);
     }
 }
