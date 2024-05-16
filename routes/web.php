@@ -41,7 +41,8 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
     Route::get('/login', 'adminLoginPage')->name('login');
     Route::post('/login', 'adminLogin')->name('login');
 
-    Route::get('/', 'adminPage')->name('index')->middleware('auth:sanctum')->middleware('auth:admin');
+    Route::get('/', 'adminPage')->name('index')->middleware(\App\Http\Middleware\AdminMiddleware::class);
+    Route::get('/delete-user/{userId}', 'deleteUser')->name('user_remove')->middleware(\App\Http\Middleware\AdminMiddleware::class);
 });
 
 Route::prefix('/family')->name('family.')->controller(FamilyController::class)->group(function () {

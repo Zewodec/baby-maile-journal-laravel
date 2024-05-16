@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            AdminUserSeeder::class,
             ChildSeeder::class,
             VagitnistVagaSeeder::class,
             PoshtovhsSeeder::class,

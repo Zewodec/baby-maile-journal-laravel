@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class AdminUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'username' => 'zewe',
-            'email' => 'adamya2015@gmail.com',
-            'password' => 'adamya2015@gmail.com',
+            'username' => 'admin',
+            'email' => 'admin@admin.ua',
+            'is_admin' => true,
+            'password' => 'admin',
         ]);
-
-        $user_amount = rand(5, 10);
-
-        User::factory()->count($user_amount)->create();
     }
 }
