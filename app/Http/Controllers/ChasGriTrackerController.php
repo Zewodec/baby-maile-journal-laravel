@@ -11,6 +11,14 @@ class ChasGriTrackerController extends Controller
     {
         $user = auth()->user();
 
+        $today_minutes = ChasGri::where('user_id', $user->id)
+            ->where('child_id', $user->selected_children_id)
+            ->whereDate('datetime', now())
+            ->sum('tracked_time');
+
+        $today_minutes = gmdate("i:s", $today_minutes);
+
+
         return view('trackers.nemovlya.chasgri', [
             'user' => $user,
             'children' => $user->children,
@@ -21,6 +29,7 @@ class ChasGriTrackerController extends Controller
                     $text_difference = round($month_diference) . "m";
                     return $text_difference;
                 })->first() ?? null,
+            'today_minutes' => $today_minutes,
         ]);
     }
 

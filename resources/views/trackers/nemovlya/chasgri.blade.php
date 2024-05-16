@@ -126,7 +126,7 @@
 
         <div class="total-time">
             <h5>Тривалість:</h5>
-            <h5 id="trivalist-time-text">{{$today_minutes ?? 0}} хв</h5>
+            <h5 id="trivalist-time-text">{{$today_minutes ?? 0}}</h5>
         </div>
 
         <div class="button-group">
