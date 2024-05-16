@@ -244,7 +244,7 @@
             </div>
 
             <input type="hidden" name="goduvanya_type" value="tverda">
-            <input type="hidden" name="plashechka_time" id="tverda_time">
+            <input type="hidden" name="tverda_time" id="tverda_time">
             <button class="action-button3">Зберегти</button>
 
             <script>

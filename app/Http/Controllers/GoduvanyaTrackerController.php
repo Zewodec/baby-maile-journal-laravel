@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GoduvanyaGrudy;
 use App\Models\GoduvanyaPlashechka;
+use App\Models\GoduvanyaTverda;
 use Illuminate\Http\Request;
 
 class GoduvanyaTrackerController extends Controller
@@ -89,7 +90,40 @@ class GoduvanyaTrackerController extends Controller
 
     function trackGoduvanyaTverda(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
+
+        $datetime = $request->datetime ?? now();
+        $group1 = $request->group1 ?? null;
+        $group2 = $request->group2 ?? null;
+        $group3 = $request->group3 ?? null;
+        $tverda_time = $request->tverda_time ?? 0;
+        $goduvanya_type = $request->goduvanya_type ?? "tverda";
+
+        if ($tverda_time == 0) {
+            return redirect()->back()->with('error', 'Ви не зафіксували час годування');
+        }
+
+        if ($group1 == null || $group2 == null || $group3 == null) {
+            return redirect()->back()->with('error', 'Ви не вибрали тип їжі');
+        }
+
+        $user = auth()->user();
+
+        $god_tverda = new GoduvanyaTverda([
+            'datetime' => $datetime,
+            'group1' => $group1,
+            'group2' => $group2,
+            'group3' => $group3,
+            'tverda_time' => $tverda_time,
+            'goduvanya_type' => $goduvanya_type,
+            'user_id' => $user->id,
+            'child_id' => $user->selected_children_id,
+        ]);
+
+        $god_tverda->save();
+
+        return redirect()->back()->with('success', 'Дані успішно збережені');
+
     }
 
 }
