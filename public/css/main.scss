@@ -1500,6 +1500,7 @@ html {
     gap: 48px;
 
     &_history {
+        flex-wrap: wrap;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1536,8 +1537,8 @@ html {
         border: 0.4px solid #000;
         background: #BDABA2;
         padding: 24px;
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -1548,9 +1549,8 @@ html {
             border-radius: 20px;
             border: 0.4px solid #000;
             background: #BDABA2;
-            padding: 24px;
-            width: 90px;
-            height: 90px;
+            width: 125px;
+            height: 120px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -1577,7 +1577,7 @@ html {
             &_history {
                 color: #FFF9F4;
                 font-family: "Parangon 510C", serif;
-                font-size: 14px;
+                font-size: 24px;
                 text-align: center;
                 font-style: normal;
                 font-weight: 400;
@@ -1585,12 +1585,12 @@ html {
         }
 
         &__image {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
 
             &_history {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
             }
         }
     }

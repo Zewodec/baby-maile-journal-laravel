@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pidguznik;
 use Illuminate\Http\Request;
 
 class PidguznikTrackerController extends Controller
@@ -21,5 +22,32 @@ class PidguznikTrackerController extends Controller
                     return $text_difference;
                 })->first() ?? null,
         ]);
+    }
+
+    function trackPidguznik(Request $request)
+    {
+//        dd(request()->all());
+
+        $type = $request->type ?? "dry";
+        $vologist = $request->vologist ?? null;
+        $kaka_color = $request->kaka_color ?? null;
+        $datetime = $request->datetime ?? now();
+
+        $user = auth()->user();
+
+        $pigduznik = new Pidguznik(
+            [
+                'user_id' => $user->id,
+                'child_id' => $user->selected_children_id,
+                'datetime' => $datetime,
+                'type' => $type,
+                'vologist' => $vologist,
+                'kaka_color' => $kaka_color
+            ]
+        );
+
+        $pigduznik->save();
+
+        return redirect()->back()->with('success', 'Дані успішно збережені!');
     }
 }

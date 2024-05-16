@@ -83,7 +83,7 @@
                 <p>Прогулянка:  00:30:10</p>
             </td>
             <td>12:00</td>
-            <td class="history-tracker-table-section__row">
+            <td class="text-center">
                 <button class="action-button3">Редагувати</button>
                 <button class="action-button3">Видалити</button>
             </td>

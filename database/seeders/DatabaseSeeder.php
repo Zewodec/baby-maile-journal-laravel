@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             GoduvanyaGrudySeeder::class,
             GoduvanyaPlashechkaSeeder::class,
             GoduvanyaTverdaSeeder::class,
+            PidguznikSeeder::class,
         ]);
     }
 }
