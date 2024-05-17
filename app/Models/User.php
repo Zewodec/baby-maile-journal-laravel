@@ -135,4 +135,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ImportantEvents::class);
     }
+
+    public function calendarEvents()
+    {
+        return $this->hasMany(CalendarEvents::class);
+    }
 }

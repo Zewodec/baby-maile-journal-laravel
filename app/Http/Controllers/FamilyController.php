@@ -11,6 +11,10 @@ class FamilyController extends Controller
     {
         $user = \auth()->user();
 
+        if ($user == null){
+            redirect('/');
+        }
+
         if ($user->selected_children_id === null) {
             $child = new Child([
                 'name'=>'test',

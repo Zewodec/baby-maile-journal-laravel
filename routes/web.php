@@ -132,6 +132,9 @@ Route::prefix('/important_events')->name('important_events.')->controller(Import
 
 Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::class)->group(function () {
     Route::get('/', 'calendarPage')->name('index');
+
+    Route::get('/remove-image/{image_id?}', 'removeImageFromEvent')->name('remove_image');
+    Route::post('/add-event', 'addEvent')->name('add_event');
 })->middleware('auth');
 
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {

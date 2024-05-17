@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             GoduvanyaTverdaSeeder::class,
             PidguznikSeeder::class,
             ImportantEventsSeeder::class,
+            CalendarEventsSeeder::class,
+            CalendarImagesSeeder::class,
         ]);
     }
 }

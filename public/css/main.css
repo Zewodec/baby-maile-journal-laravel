@@ -1857,4 +1857,63 @@ html {
   overflow-y: auto;
 }
 
+.calendar-section {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.calendar-info {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.calendar-info__date {
+  color: #AEA29C;
+  text-align: justify;
+  font-family: "Parangon 510C", serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+}
+.calendar-info__text {
+  color: #FFF9F4;
+  text-align: justify;
+  font-family: "Parangon 510C", serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  min-height: 200px;
+  padding: 14px;
+  background: #BDABA2;
+  border-radius: 20px;
+}
+.calendar-info__images-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+.calendar-info__images-group__image {
+  background: #BDABA2;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: #0d1116 1px solid;
+}
+.calendar-info__images-group__image-g {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin-v-30px {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 /*# sourceMappingURL=main.css.map */

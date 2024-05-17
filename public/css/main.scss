@@ -2066,3 +2066,69 @@ margin-top: 60px;
 
     }
 }
+
+.calendar-section{
+    @include padding-horizontal;
+    @include padding-vertical;
+}
+
+.calendar-info {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    // .calendar-info__date
+    &__date {
+        color: #AEA29C;
+        text-align: justify;
+        font-family: "Parangon 510C", serif;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    // .calendar-info__text
+    &__text {
+        color: $lite-Khaki-color;
+        text-align: justify;
+        font-family: "Parangon 510C", serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+
+        min-height: 200px;
+
+        padding: 14px;
+        background: $Khaki-color;
+        border-radius: 20px;
+    }
+
+    // .calendar-info__images-group
+    &__images-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 60px;
+        // .calendar-info__images-group__image
+        &__image {
+            background: $Khaki-color;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: #0d1116 1px solid;
+        }
+        &__image-g{
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.margin-v-30px{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
