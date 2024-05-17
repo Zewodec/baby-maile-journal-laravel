@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ChasGriTrackerController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\GoduvanyaTrackerController;
@@ -123,7 +124,11 @@ Route::prefix('/important_events')->name('important_events.')->controller(Import
 
     Route::get('/add', 'addEventPage')->name('add');
     Route::post('/add', 'addEventRequest')->name('add');
-});
+})->middleware('auth');
+
+Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::class)->group(function () {
+    Route::get('/', 'calendarPage')->name('index');
+})->middleware('auth');
 
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {
 //    Route::post('/register', 'register')->name('register');
