@@ -38,6 +38,10 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
     Route::post('/change-password', 'changePassword')->name('change-password')->middleware('auth');
 });
 
+Route::get('/login', function (){
+    return redirect(\route('auth.'));
+})->name('login');
+
 Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
     Route::get('/login', 'adminLoginPage')->name('login');
     Route::post('/login', 'adminLogin')->name('login');
