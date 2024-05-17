@@ -35,7 +35,7 @@
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
-                <a href="#">Календар</a>
+                <a href="{{route('calendar.index')}}">Календар</a>
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
@@ -59,7 +59,9 @@
                 <a href="{{route('family.select_child', $child->id)}}">
                 <div class="selected-child__text">
                     <p>{{$child->name}}</p>
+                    @if(isset($child['birthday']))
                     <p style="font-size: 32px;">({{$child['birthday']->format('d-m-Y')}})</p>
+                    @endif
                 </div>
                 </a>
                 <div class="selected-child__action-buttons">
