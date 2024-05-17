@@ -58,10 +58,13 @@ class TrackersController extends Controller
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
             'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    $month_diference = $item->diffInMonths(now());
+                    if ($item !== null) {
+                        $month_diference = $item->diffInMonths(now());
 
-                    $text_difference = round($month_diference) . "m";
-                    return $text_difference;
+                        $text_difference = round($month_diference). "m";
+                        return $text_difference;
+                    }
+                    return null;
                 })->first() ?? null,
             'vaga' => $vaga,
             'nadbavka' => $nadbavka,
@@ -76,10 +79,13 @@ class TrackersController extends Controller
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
             'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    $month_diference = $item->diffInMonths(now());
+                    if ($item !== null) {
+                        $month_diference = $item->diffInMonths(now());
 
-                    $text_difference = round($month_diference) . "m";
-                    return $text_difference;
+                        $text_difference = round($month_diference). "m";
+                        return $text_difference;
+                    }
+                    return null;
                 })->first() ?? null,
         ]);
     }
