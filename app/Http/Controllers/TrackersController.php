@@ -18,10 +18,12 @@ class TrackersController extends Controller
 
         if ($user->children->where('id', $user->selected_children_id) !== null) {
             $children_age_string = $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                $month_diference = $item->diffInMonths(now());
+                if ($item !== null) {
+                    $month_diference = $item->diffInMonths(now());
 
-                $text_difference = round($month_diference) . "m";
-                return $text_difference;
+                    $text_difference = round($month_diference). "m";
+                    return $text_difference;
+                }
             })->first() ?? null;
         } else{
             $children_age_string = '';
