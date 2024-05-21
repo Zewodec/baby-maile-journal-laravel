@@ -13,22 +13,26 @@ class SettingsController extends Controller
 
         $settings = $user->settings->where('child_id', $user->selected_children_id)->first();
 
+        $children_age_string = $user->children->where('id', $user->selected_children_id)->first();
 
-        return view('pages.settings',[
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->pluck('birthday')->map(function ($item) {
+                if ($item !== null) {
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = round($month_diference) . "m";
+                    return $text_difference;
+                }
+                return null;
+            })->first();
+        }
+
+        return view('pages.settings', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
-            'settings' => $settings,
-        ]);
+            'children_age_string' => $children_age_string,
+            'settings' => $settings]);
     }
 
     function settingsSaveInfo(Request $request)

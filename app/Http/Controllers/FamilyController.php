@@ -15,17 +15,40 @@ class FamilyController extends Controller
             redirect('/');
         }
 
+//        if ($user->selected_children_id === null) {
+//            $child = new Child([
+//                'name'=>'test',
+//                'surname'=>'test',
+//                'sex'=>'male',
+//                'birthday'=>'2021-01-01',
+//                'vagitnist_date'=>'2024-01-01',
+//                'user_id'=>$user->id,
+//            ]);
+//            $child->save();
+//            $user->selected_children_id = $child->id;
+//        }
+
+
         if ($user->selected_children_id === null) {
-            $child = new Child([
-                'name'=>'test',
-                'surname'=>'test',
-                'sex'=>'male',
-                'birthday'=>'2021-01-01',
-                'vagitnist_date'=>'2024-01-01',
-                'user_id'=>$user->id,
-            ]);
-            $child->save();
-            $user->selected_children_id = $child->id;
+            $children = $user->children->first();
+            if ($user->selected_children_id !== null) {
+            $user->selected_children_id = $children->id;
+            $user->save();
+            }
+        }
+
+        $children_age_string = $user->children->where('id', $user->selected_children_id)->first();
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->pluck('birthday')->map(function ($item) {
+                if ($item !== null) {
+                    $month_diference = $item->diffInMonths(now());
+
+                    $text_difference = round($month_diference) . "m";
+                    return $text_difference;
+                }
+                return null;
+            })->first();
         }
 
         return view('pages.family',
@@ -33,15 +56,7 @@ class FamilyController extends Controller
                 'user' => $user,
                 'children' => $user->children,
                 'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-                'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+                'children_age_string' => $children_age_string,
             ]);
     }
 
