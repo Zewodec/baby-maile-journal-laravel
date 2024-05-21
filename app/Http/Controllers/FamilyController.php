@@ -51,12 +51,15 @@ class FamilyController extends Controller
             })->first();
         }
 
+        $parents = $user->parents;
+
         return view('pages.family',
             [
                 'user' => $user,
                 'children' => $user->children,
                 'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
                 'children_age_string' => $children_age_string,
+                'parents' => $parents,
             ]);
     }
 

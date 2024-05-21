@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             CalendarEventsSeeder::class,
             CalendarImagesSeeder::class,
             SettingsSeeder::class,
+            ParentsSeeder::class,
         ]);
     }
 }
