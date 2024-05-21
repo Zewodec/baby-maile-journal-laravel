@@ -113,7 +113,7 @@
         </div>
 
         <div class="action-group-vertical">
-            <button class="action-button3">Вийти з облікового запису</button>
+            <a href="{{route("auth.logout")}}" class="action-button3">Вийти з облікового запису</a>
             <button class="action-button3">Видалити обліковий запис</button>
         </div>
 
