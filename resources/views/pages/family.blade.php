@@ -51,16 +51,16 @@
         <div class="parents-section__item">
             <img src="{{url('storage/' . $parents['parent_1_image'])}}" alt="parent avatar"/>
             <div class="parents-section__item__fields">
-                <input name="parent1_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_1_first_name']}}">
-                <input name="parent1_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_1_last_name']}}">
+                <input name="parent1_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_1_first_name'] ?? null}}">
+                <input name="parent1_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_1_last_name'] ?? null}}">
             </div>
         </div>
 
         <div class="parents-section__item">
             <img src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar"/>
             <div class="parents-section__item__fields">
-                <input name="parent2_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_2_first_name']}}">
-                <input name="parent2_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_2_last_name']}}">
+                <input name="parent2_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_2_first_name']  ?? null}}">
+                <input name="parent2_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_2_last_name'] ?? null}}">
             </div>
         </div>
     </section>

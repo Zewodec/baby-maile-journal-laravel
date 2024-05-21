@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('parents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('parent_1_image')->nullable();
+            $table->string('parent_1_image')->default('parent_images/parent-avatar.png');
             $table->string('parent_1_first_name')->nullable();
             $table->string('parent_1_last_name')->nullable();
-            $table->string('parent_2_image')->nullable();
+            $table->string('parent_2_image')->default('parent_images/parent-avatar.png');
             $table->string('parent_2_first_name')->nullable();
             $table->string('parent_2_last_name')->nullable();
             $table->foreignId('user_id')->constrained();
