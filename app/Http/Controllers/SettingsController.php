@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -40,6 +41,12 @@ class SettingsController extends Controller
         $user = auth()->user();
 
         $settings = $user->settings->where('child_id', $user->selected_children_id)->first();
+
+        if ($settings === null) {
+            $settings = new Settings();
+            $settings->user_id = $user->id;
+            $settings->child_id = $user->selected_children_id;
+        }
 
         $settings->start_last_menstruation = $start_last_menstruation;
         $settings->pology_date = $pology_date;

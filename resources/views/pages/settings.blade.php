@@ -14,21 +14,21 @@
                     <div class="border-container__fields-group__item">
                         <p class="border-container__fields-group__item__label">Початок останьої менструації:</p>
                         <input id="last_menstruation" type="date" class="input-text w100percent"
-                               placeholder="Початок останьої менструації" name="start_last_menstruation" value="{{$settings['start_last_menstruation']}}">
+                               placeholder="Початок останьої менструації" name="start_last_menstruation" value="{{$settings['start_last_menstruation'] ?? null}}">
                     </div>
                     <div class="border-container__fields-group__item">
                         <p class="border-container__fields-group__item__label">Дата пологів:</p>
-                        <input id="pology_date" type="date" class="input-text w100percent" placeholder="Дата пологів" value="{{$settings['pology_date']}}"
+                        <input id="pology_date" type="date" class="input-text w100percent" placeholder="Дата пологів" value="{{$settings['pology_date'] ?? null}}"
                                name="pology_date">
                     </div>
                     <div class="border-container__fields-group__item">
                         <p class="border-container__fields-group__item__label">Акушерський термін:</p>
-                        <input id="akusherskiy_termin" type="date" class="input-text w100percent" value="{{$settings['alusherskiy_termin']}}"
+                        <input id="akusherskiy_termin" type="date" class="input-text w100percent" value="{{$settings['alusherskiy_termin'] ?? null}}"
                                placeholder="Акушерський термін" name="alusherskiy_termin">
                     </div>
                     <div class="border-container__fields-group__item">
                         <p class="border-container__fields-group__item__label">Дата зачаття:</p>
-                        <input id="data_zachatya" type="date" class="input-text w100percent" placeholder="Дата зачаття" value="{{$settings['data_zachatya']}}"
+                        <input id="data_zachatya" type="date" class="input-text w100percent" placeholder="Дата зачаття" value="{{$settings['data_zachatya'] ?? null}}"
                                name="data_zachatya">
                     </div>
                 </div>
