@@ -1916,4 +1916,64 @@ html {
   margin-bottom: 30px;
 }
 
+.h3_anastasia {
+  color: #000;
+  font-family: AnastasiaScript, serif;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.settings-section {
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+}
+
+.border-container {
+  border: 1px solid #000;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.border-container__fields-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.border-container__fields-group__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.border-container__fields-group__item__label {
+  color: #000;
+  font-family: AnastasiaScript, serif;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.border-container__action-group {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.action-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=main.css.map */

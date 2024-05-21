@@ -12,6 +12,7 @@ use App\Http\Controllers\PidguznikTrackerController;
 use App\Http\Controllers\PoshtovhsTrackerController;
 use App\Http\Controllers\ProgulyankaTrackerController;
 use App\Http\Controllers\RozvytokDytynyController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SonTrackerController;
 use App\Http\Controllers\TrackersController;
 use App\Http\Controllers\VagaTrackerController;
@@ -136,6 +137,9 @@ Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::cl
     Route::get('/remove-image/{image_id?}', 'removeImageFromEvent')->name('remove_image');
     Route::post('/add-event', 'addEvent')->name('add_event');
 })->middleware('auth');
+
+Route::get('/settings', [SettingsController::class, 'settingsPage'])->name('settings')->middleware('auth');
+Route::post('/settings/save', [SettingsController::class, 'settingsSaveInfo'])->name('settings.save')->middleware('auth');
 
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {
 //    Route::post('/register', 'register')->name('register');

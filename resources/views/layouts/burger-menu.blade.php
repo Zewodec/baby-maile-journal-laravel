@@ -47,7 +47,7 @@
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
-                <a href="#">Налаштування</a>
+                <a href="{{route('settings')}}">Налаштування</a>
             </li>
 
         </ul>

@@ -24,6 +24,11 @@ class Child extends Model
         'vagitnist_date' => 'datetime',
     ];
 
+    public function settings()
+    {
+        return $this->hasOne(Settings::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
