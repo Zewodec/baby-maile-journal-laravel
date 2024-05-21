@@ -59,6 +59,9 @@ Route::prefix('/family')->name('family.')->controller(FamilyController::class)->
 
     Route::post('/add-child', 'addChild')->name('add_child')->middleware('auth');
     //TODO: Save info about childrens and parents
+
+    Route::post('/save-parents', 'saveParents')->name('save_parents')->middleware('auth');
+
     //TODO: Changing password
 });
 

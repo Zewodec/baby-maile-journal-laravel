@@ -47,23 +47,59 @@
         });
     </script>
 
-    <section class="parents-section">
+    <form class="parents-section" action="{{route('family.save_parents')}}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="parents-section__item">
-            <img src="{{url('storage/' . $parents['parent_1_image'])}}" alt="parent avatar"/>
+            <img class="family-image" src="{{url('storage/' . $parents['parent_1_image'])}}" alt="parent avatar" id="parent_1_image"/>
+            <input name="parent_1_image" type="file" hidden id="parent_1_image_input">
             <div class="parents-section__item__fields">
-                <input name="parent1_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_1_first_name'] ?? null}}">
-                <input name="parent1_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_1_last_name'] ?? null}}">
+                <input name="parent_1_first_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_1_first_name'] ?? null}}">
+                <input name="parent_1_last_name" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_1_last_name'] ?? null}}">
             </div>
         </div>
 
         <div class="parents-section__item">
-            <img src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar"/>
+            <img class="family-image" src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar" id="parent_2_image"/>
+            <input name="parent_2_image" type="file" hidden id="parent_2_image_input">
             <div class="parents-section__item__fields">
-                <input name="parent2_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_2_first_name']  ?? null}}">
-                <input name="parent2_surname" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_2_last_name'] ?? null}}">
+                <input name="parent_2_first_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_2_first_name']  ?? null}}">
+                <input name="parent_2_last_name" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_2_last_name'] ?? null}}">
             </div>
         </div>
-    </section>
+    </form>
+
+    <script>
+        const parent1Image = document.getElementById('parent_1_image');
+        const parent1ImageInput = document.getElementById('parent_1_image_input');
+        const parent2Image = document.getElementById('parent_2_image');
+        const parent2ImageInput = document.getElementById('parent_2_image_input');
+
+        parent1Image.addEventListener('click', function() {
+            parent1ImageInput.click();
+        });
+
+        parent1ImageInput.addEventListener('change', function() {
+            const file = parent1ImageInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                parent1Image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        parent2Image.addEventListener('click', function() {
+            parent2ImageInput.click();
+        });
+
+        parent2ImageInput.addEventListener('change', function() {
+            const file = parent2ImageInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                parent2Image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
 
     <div class="save-button-section">
         <button class="action-button2">Зберегти дані</button>
