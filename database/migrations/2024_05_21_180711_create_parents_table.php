@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('parent_2_image')->default('parent_images/parent-avatar.png');
             $table->string('parent_2_first_name')->nullable();
             $table->string('parent_2_last_name')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
