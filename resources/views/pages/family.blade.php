@@ -66,6 +66,9 @@
                 <input name="parent_2_last_name" class="input-text" type="text" placeholder="Прізвище одного з батьків" value="{{$parents['parent_2_last_name'] ?? null}}">
             </div>
         </div>
+        <div class="save-button-section">
+            <button class="action-button2">Зберегти дані Батьків</button>
+        </div>
     </form>
 
     <script>

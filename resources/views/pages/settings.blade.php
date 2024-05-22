@@ -104,11 +104,6 @@
                 <div class="text-center">
                     <button class="action-button3">Зберегти дані</button>
                 </div>
-
-                <div class="border-container__action-group">
-                    <button type="button" class="action-button3">Я народила!</button>
-                    <button type="button" class="action-button3">Я більше не вагітна..</button>
-                </div>
             </form>
         </div>
 

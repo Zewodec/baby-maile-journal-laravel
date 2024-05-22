@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use App\Models\Parents;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
@@ -15,21 +16,9 @@ class FamilyController extends Controller
             redirect('/');
         }
 
-//        if ($user->selected_children_id === null) {
-//            $child = new Child([
-//                'name'=>'test',
-//                'surname'=>'test',
-//                'sex'=>'male',
-//                'birthday'=>'2021-01-01',
-//                'vagitnist_date'=>'2024-01-01',
-//                'user_id'=>$user->id,
-//            ]);
-//            $child->save();
-//            $user->selected_children_id = $child->id;
-//        }
-
 
         if ($user->selected_children_id === null) {
+            // select first child if user has children
             $children = $user->children->first();
             if ($user->selected_children_id !== null) {
             $user->selected_children_id = $children->id;
@@ -93,5 +82,45 @@ class FamilyController extends Controller
 //
 //        return redirect()->route('family.index');
 //    }
+
+    public function saveParents(Request $request)
+    {
+        $user = \auth()->user();
+
+        $parents = $user->parents->first();
+
+        $parent_1_first_name = $request->parent_1_first_name;
+        $parent_1_last_name = $request->parent_1_last_name;
+//        $parent_1_image = $request->parent_1_image;
+
+        $parent_2_first_name = $request->parent_2_first_name;
+        $parent_2_last_name = $request->parent_2_last_name;
+//        $parent_2_image = $request->parent_2_image;
+
+        if ($parents !== null){
+            $parents->parent_1_first_name = $parent_1_first_name;
+            $parents->parent_1_last_name = $parent_1_last_name;
+
+            $parents->parent_1_image = $request->file('parent_1_image') ? $request->file('parent_1_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+
+            $parents->parent_2_first_name = $parent_2_first_name;
+            $parents->parent_2_last_name = $parent_2_last_name;
+            $parents->parent_2_image = $request->file('parent_2_image') ? $request->file('parent_2_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+
+            $parents->save();
+        } else{
+            $parents = new Parents();
+            $parents->user_id = $user->id;
+            $parents->parent_1_first_name = $parent_1_first_name;
+            $parents->parent_1_last_name = $parent_1_last_name;
+            $parents->parent_1_image = $request->file('parent_1_image') ? $request->file('parent_1_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+            $parents->parent_2_first_name = $parent_2_first_name;
+            $parents->parent_2_last_name = $parent_2_last_name;
+            $parents->parent_2_image = $request->file('parent_2_image') ? $request->file('parent_2_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+            $parents->save();
+        }
+
+        return redirect()->route('family.index');
+    }
 }
 

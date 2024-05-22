@@ -7,7 +7,7 @@
     <h1 class="h1_anastasia text-center">Важливі події</h1>
 
     <h3 class="text-center ingredients-selection__text"><a href="{{route("important_events.add")}}"
-                                                           style="color: #BDABA2">Додайте свою першу подію!</a></h3>
+                                                           style="color: #BDABA2">Додайте подію!</a></h3>
 
     <div class="important-events-group">
         @foreach($events as $event)
