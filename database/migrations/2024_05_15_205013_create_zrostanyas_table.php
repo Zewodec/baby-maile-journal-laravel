@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('zrostanyas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('child_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('child_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->dateTime('datetime');
             $table->float('length');
             $table->float('weight');

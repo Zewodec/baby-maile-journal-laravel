@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('child_id')->constrained('children');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('child_id')->constrained('children')->cascadeOnDelete();
             $table->date('start_last_menstruation')->nullable();
             $table->date('pology_date')->nullable();
             $table->date('alusherskiy_termin')->nullable();

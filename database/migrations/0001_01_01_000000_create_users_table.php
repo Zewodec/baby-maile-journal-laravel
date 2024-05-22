@@ -20,10 +20,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_admin')->default(false);
-            $table->string('parent1_name')->nullable();
-            $table->string('parent1_surname')->nullable();
-            $table->string('parent2_name')->nullable();
-            $table->string('parent2_surname')->nullable();
             $table->integer('selected_children_id')->nullable();
         });
 

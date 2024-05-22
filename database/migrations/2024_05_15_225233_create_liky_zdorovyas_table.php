@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('liky_zdorovyas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('child_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('child_id')->constrained()->cascadeOnDelete();
             $table->dateTime('date');
             $table->string('type');
             $table->string('liky_vacine');

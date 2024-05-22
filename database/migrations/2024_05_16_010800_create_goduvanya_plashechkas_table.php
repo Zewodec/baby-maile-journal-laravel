@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('plashechka_amount');
             $table->time('plashechka_time');
             $table->string('goduvanya_type');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('child_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('child_id')->constrained()->cascadeOnDelete();
         });
     }
 

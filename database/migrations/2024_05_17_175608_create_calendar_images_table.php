@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('path');
-            $table->foreignId('calendar_events_id')->constrained('calendar_events');
+            $table->foreignId('calendar_events_id')->constrained('calendar_events')->cascadeOnDelete();
         });
     }
 

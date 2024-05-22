@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('sex', ['male', 'female', 'null'])->nullable();
             $table->date('birthday')->nullable();
             $table->date('vagitnist_date')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->double('vaga');
             $table->dateTime('date');
             $table->integer('week');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('children_id')->constrained('children');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('children_id')->constrained('children')->cascadeOnDelete();
             $table->timestamps();
         });
     }

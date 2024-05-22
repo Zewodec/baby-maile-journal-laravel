@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('important_events', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('child_id')->constrained('children');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('child_id')->constrained('children')->cascadeOnDelete();
             $table->string('event_name');
             $table->string('event_description');
             $table->text('event_text');

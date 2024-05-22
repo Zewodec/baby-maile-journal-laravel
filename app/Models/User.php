@@ -21,10 +21,6 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'parent1_name',
-        'parent1_surname',
-        'parent2_name',
-        'parent2_surname',
         'selected_children_id',
     ];
 
