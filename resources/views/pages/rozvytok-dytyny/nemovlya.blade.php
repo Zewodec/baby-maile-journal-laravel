@@ -21,6 +21,10 @@
             </button>
         </div>
 
+        @if(isset($current_week))
+            <p class="week-info__group__left__text">(Поточний тиждень: {{$current_week}})</p>
+        @endif
+
         <div class="week-info__group">
             <div class="week-info__group__left">
                 <img id="nemovlya-image" class="week-info__group__left__image"

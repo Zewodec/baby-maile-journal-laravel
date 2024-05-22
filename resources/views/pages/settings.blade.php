@@ -44,6 +44,7 @@
                         let pology_date_value = new Date(last_menstruation.value);
                         pology_date_value.setMonth(pology_date_value.getMonth() - 3);
                         pology_date_value.setDate(pology_date_value.getDate() + 7);
+                        pology_date_value.setFullYear(pology_date_value.getFullYear() + 1);
                         pology_date.value = pology_date_value.toISOString().split('T')[0];
 
                         let akusherskiy_termin_value = new Date(last_menstruation.value);
@@ -59,6 +60,7 @@
                         let last_menstruation_value = new Date(pology_date.value);
                         last_menstruation_value.setMonth(last_menstruation_value.getMonth() + 3);
                         last_menstruation_value.setDate(last_menstruation_value.getDate() - 7);
+                        last_menstruation_value.setFullYear(last_menstruation_value.getFullYear() - 1);
                         last_menstruation.value = last_menstruation_value.toISOString().split('T')[0];
 
                         let akusherskiy_termin_value = last_menstruation_value;
@@ -78,6 +80,7 @@
                         let pology_date_value = last_menstruation_value;
                         pology_date_value.setMonth(pology_date_value.getMonth() - 3);
                         pology_date_value.setDate(pology_date_value.getDate() + 7);
+                        pology_date_value.setFullYear(pology_date_value.getFullYear() + 1);
                         pology_date.value = pology_date_value.toISOString().split('T')[0];
 
                         let data_zachatya_value = last_menstruation_value;
@@ -93,6 +96,7 @@
                         let pology_date_value = last_menstruation_value;
                         pology_date_value.setMonth(pology_date_value.getMonth() - 3);
                         pology_date_value.setDate(pology_date_value.getDate() + 7);
+                        pology_date_value.setFullYear(pology_date_value.getFullYear() + 1);
                         pology_date.value = pology_date_value.toISOString().split('T')[0];
 
                         let akusherskiy_termin_value = last_menstruation_value;

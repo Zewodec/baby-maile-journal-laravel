@@ -36,7 +36,7 @@ class RozvytokDytynyController extends Controller
         $child_zachatya = Carbon::parse($child_settings->data_zachatya);
         $week_difference = round($child_zachatya->diffInWeeks(now()));
         $day_difference = round($child_zachatya->diffInDays(now()));
-        $days_without_weeks = ($week_difference * 7) - $day_difference;
+        $days_without_weeks = $day_difference - ($week_difference * 7);
 
         $current_week = $week_difference . ' тиждень ' . $days_without_weeks . ' дні';
 
@@ -61,6 +61,14 @@ class RozvytokDytynyController extends Controller
     {
         $user = auth()->user();
 
+        $child_settings = Child::find($user->selected_children_id)->settings->first();
+        $child_zachatya = Carbon::parse($child_settings->pology_date);
+        $week_difference = round($child_zachatya->diffInWeeks(now()));
+        $day_difference = round($child_zachatya->diffInDays(now()));
+        $days_without_weeks = $day_difference - ($week_difference * 7);
+
+        $current_week = $week_difference . ' тиждень ' . $days_without_weeks . ' дні';
+
         return view('pages.rozvytok-dytyny.nemovlya', [
             'user' => $user,
             'children' => $user->children,
@@ -74,6 +82,7 @@ class RozvytokDytynyController extends Controller
                     }
                     return null;
                 })->first() ?? null,
+            'current_week' => $current_week,
         ]);
     }
 }
