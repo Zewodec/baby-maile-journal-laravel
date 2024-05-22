@@ -69,6 +69,11 @@ class RozvytokDytynyController extends Controller
 
         $current_week = $week_difference . ' тиждень ' . $days_without_weeks . ' дні';
 
+        // if child is not born yet then set current week to null
+        if ($week_difference < 0) {
+            $current_week = null;
+        }
+
         return view('pages.rozvytok-dytyny.nemovlya', [
             'user' => $user,
             'children' => $user->children,
