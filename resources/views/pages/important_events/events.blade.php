@@ -16,6 +16,7 @@
                 <h2 class="important-events-group__item__title">{{$event->event_name}}</h2>
                 <p class="important-events-group__item__description">{{$event->event_description}}</p>
                 <p class="important-events-group__item__text">{{$event->event_text}}</p>
+                <a href="{{ route('important_events.delete', ['eventID' => $event->id]) }}" class="action-button3">Видалити подію</a>
             </div>
         @endforeach
     </div>

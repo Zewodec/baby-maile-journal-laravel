@@ -132,6 +132,8 @@ Route::prefix('/important_events')->name('important_events.')->controller(Import
 
     Route::get('/add', 'addEventPage')->name('add');
     Route::post('/add', 'addEventRequest')->name('add');
+
+    Route::get('/delete/{eventID}', 'deleteEvent')->name('delete')->middleware('auth');
 })->middleware('auth');
 
 Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::class)->group(function () {

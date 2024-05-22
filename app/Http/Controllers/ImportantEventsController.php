@@ -78,4 +78,12 @@ class ImportantEventsController extends Controller
 
         return redirect()->route('important_events.index');
     }
+
+    function deleteEvent($eventID)
+    {
+        $event = ImportantEvents::find($eventID);
+        $event->delete();
+
+        return redirect()->route('important_events.index');
+    }
 }
