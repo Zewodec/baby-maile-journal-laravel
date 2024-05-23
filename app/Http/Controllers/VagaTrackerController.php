@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use App\Models\VagitnistVaga;
 use Illuminate\Http\Request;
 
@@ -12,20 +13,14 @@ class VagaTrackerController extends Controller
         $user = auth()->user();
         $vaga_data = $user->vagitnistVagas()->where('children_id', $user->selected_children_id)->orderBy('date', 'desc')->get();
 
+
+
         return view('trackers.vagitnist.vaga', [
             'vaga_data' => $vaga_data,
             'user' => $user,
             'children' => $user->children,
             'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             ]);
     }
 

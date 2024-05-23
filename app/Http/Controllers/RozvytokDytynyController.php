@@ -12,19 +12,17 @@ class RozvytokDytynyController extends Controller
     {
         $user = auth()->user();
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('pages.rozvytok-dytyny', [
             'user' => $user,
             'children' => $user->children,
             'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
         ]);
     }
 
@@ -40,19 +38,17 @@ class RozvytokDytynyController extends Controller
 
         $current_week = $week_difference . ' тиждень ' . $days_without_weeks . ' дні';
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('pages.rozvytok-dytyny.vagitnist', [
             'user' => $user,
             'children' => $user->children,
             'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'current_week' => $current_week,
         ]);
     }
@@ -74,19 +70,17 @@ class RozvytokDytynyController extends Controller
             $current_week = null;
         }
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('pages.rozvytok-dytyny.nemovlya', [
             'user' => $user,
             'children' => $user->children,
             'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'current_week' => $current_week,
         ]);
     }

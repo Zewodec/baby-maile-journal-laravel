@@ -14,19 +14,22 @@ class Child extends Model
         'name',
         'surname',
         'sex',
-        'birthday',
-        'vagitnist_date',
         'user_id',
         ];
-
-    protected $casts = [
-        'birthday' => 'datetime',
-        'vagitnist_date' => 'datetime',
-    ];
 
     public function settings()
     {
         return $this->hasOne(Settings::class);
+    }
+
+    public function getBirthday()
+    {
+        return $this->settings()->first()->pology_date;
+    }
+
+    public function getDataZachatya()
+    {
+        return $this->settings()->first()->data_zachatya;
     }
 
     public function user()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use App\Models\Poshtovhs;
 use DateTime;
 use Illuminate\Http\Request;
@@ -24,19 +25,17 @@ class PoshtovhsTrackerController extends Controller
 
         $poshtovhs = json_decode($poshtovhs, true);
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('trackers.vagitnist.poshtovhs', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'poshtovhs' => $poshtovhs,
         ]);
     }
@@ -94,19 +93,18 @@ class PoshtovhsTrackerController extends Controller
 
         $poshtovhs_duration = DateTime::createFromFormat('H:i:s', $poshtovhs[$session_id][count($poshtovhs[$session_id]) - 1]['time'])->diff(DateTime::createFromFormat('H:i:s', $poshtovhs[$session_id][0]['time']));
 // route trackers.vagitnist.poshtovhs_details
+
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('trackers.vagitnist.poshtovhs-details', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'poshtovhs_date' => $poshtovhs_date,
             'poshtovhs_duration' => $poshtovhs_duration->format('%H:%I:%S'),
             'session_id' => $session_id,

@@ -26,21 +26,14 @@ class FamilyController extends Controller
             }
         }
 
-        $children_age_string = $user->children->where('id', $user->selected_children_id)->first();
+        $children_age_string = Child::find($user->selected_children_id);
 
         if ($children_age_string !== null) {
-            $children_age_string = $children_age_string->pluck('birthday')->map(function ($item) {
-                if ($item !== null) {
-                    $month_diference = $item->diffInMonths(now());
-
-                    $text_difference = round($month_diference) . "m";
-                    return $text_difference;
-                }
-                return null;
-            })->first();
+            $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
         $parents = $user->parents;
+
 
         return view('pages.family',
             [

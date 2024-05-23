@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Settings;
 use App\Models\User;;
 
 use Illuminate\Http\Request;
@@ -38,6 +39,8 @@ class AuthController extends Controller
             'password' => $request->password,
             'email_verified_at' => now()
         ]);
+
+        $user->save();
 
         \auth()->login($user);
 

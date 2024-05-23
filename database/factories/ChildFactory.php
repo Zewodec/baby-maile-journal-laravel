@@ -20,7 +20,6 @@ class ChildFactory extends Factory
             'name' => $this->faker->firstName(),
             'surname' => $this->faker->lastName(),
             'sex' => $this->faker->randomElement(['male','female','null']),
-            'birthday' => $this->faker->date(),
         ];
     }
 }

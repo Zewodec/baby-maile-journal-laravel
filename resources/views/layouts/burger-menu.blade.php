@@ -59,8 +59,8 @@
                 <a href="{{route('family.select_child', $child->id)}}">
                 <div class="selected-child__text">
                     <p>{{$child->name}}</p>
-                    @if(isset($child['birthday']))
-                    <p style="font-size: 32px;">({{$child['birthday']->format('d-m-Y')}})</p>
+                    @if(isset($child->settings->pology_date))
+                    <p style="font-size: 32px;">({{$child->settings->pology_date}})</p>
                     @endif
                 </div>
                 </a>

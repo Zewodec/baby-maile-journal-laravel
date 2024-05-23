@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isNull;
 
@@ -16,17 +17,10 @@ class TrackersController extends Controller
             $user->save();
         }
 
-        if ($user->children->where('id', $user->selected_children_id) !== null) {
-            $children_age_string = $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                if ($item !== null) {
-                    $month_diference = $item->diffInMonths(now());
+        $children_age_string = Child::find($user->selected_children_id);
 
-                    $text_difference = round($month_diference). "m";
-                    return $text_difference;
-                }
-            })->first() ?? null;
-        } else{
-            $children_age_string = '';
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
         }
 
         return view('trackers', [
@@ -54,20 +48,17 @@ class TrackersController extends Controller
             $nadbavka = $user->vagitnistVagas()->where('children_id', $user->selected_children_id)->orderBy('date', 'desc')->get()->first()->vaga - $user->vagitnistVagas()->where('children_id', $user->selected_children_id)->orderBy('date', 'desc')->get()[1]->vaga;
             }
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
 
         return view('trackers.vagitnist.vagitnist', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'vaga' => $vaga,
             'nadbavka' => $nadbavka,
         ]);
@@ -76,19 +67,19 @@ class TrackersController extends Controller
     function trackerMenuNemovlyaPage()
     {
         $user = auth()->user();
+
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
+
         return view('trackers.nemovlya.nemovlya', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
         ]);
     }
 }
