@@ -14,6 +14,7 @@ use App\Http\Controllers\ProgulyankaTrackerController;
 use App\Http\Controllers\RozvytokDytynyController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SonTrackerController;
+use App\Http\Controllers\SpeakingForumController;
 use App\Http\Controllers\TrackersController;
 use App\Http\Controllers\VagaTrackerController;
 use App\Http\Controllers\ZcidjuvanyaTrackerController;
@@ -146,6 +147,7 @@ Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::cl
 Route::get('/settings', [SettingsController::class, 'settingsPage'])->name('settings')->middleware('auth');
 Route::post('/settings/save', [SettingsController::class, 'settingsSaveInfo'])->name('settings.save')->middleware('auth');
 
+Route::get('/speaking-forum', [SpeakingForumController::class, 'speakingForumPage'])->name('speaking_forum');
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {
 //    Route::post('/register', 'register')->name('register');
 //    Route::post('/login', 'login')->name('login');

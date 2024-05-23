@@ -14,6 +14,7 @@ class Child extends Model
         'name',
         'surname',
         'sex',
+        'child_image',
         'user_id',
         ];
 

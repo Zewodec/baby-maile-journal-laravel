@@ -2206,3 +2206,61 @@ margin-top: 60px;
     background-color: $lite-Khaki-color;
     border: $Khaki-color 5px solid;
 }
+
+.messages-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    align-items: start;
+}
+
+.message {
+
+    background-color: $Khaki-color;
+    border-radius: 20px;
+    padding: 24px;
+
+    // .message__username
+    &__username {
+        color: #FFF9F4;
+        font-family: "Parangon 510C", serif;
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    // .message__text
+    &__text {
+        color: #FFF9F4;
+        text-align: justify;
+        font-family: "Parangon 510C", serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 9px; /* 100% */
+    }
+
+    // .message__actions
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        & input{
+            width: 100%;
+        }
+    }
+}
+
+.chat-container{
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: flex-end;
+}

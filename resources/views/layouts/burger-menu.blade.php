@@ -43,7 +43,7 @@
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
-                <a href="#">Форум спілкування</a>
+                <a href="{{route('speaking_forum')}}">Форум спілкування</a>
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
