@@ -601,6 +601,15 @@ html {
   width: 100%;
 }
 
+@media (max-width: 400px) {
+  .footer {
+    padding-top: 120px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+  }
+}
 .hidden {
   opacity: 0;
   height: 0;
@@ -964,6 +973,21 @@ html {
   width: 100%;
 }
 
+@media (max-width: 400px) {
+  .user-section {
+    gap: 20px;
+  }
+  .user-section__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .user-section__form input {
+    width: 100%;
+  }
+}
 .children-section {
   padding-left: 80px;
   padding-right: 80px;
@@ -988,6 +1012,24 @@ html {
   grid-template-columns: repeat(2, 1fr);
 }
 
+@media (max-width: 400px) {
+  .children-section {
+    gap: 36px;
+    padding-top: 40px;
+  }
+  .child__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+  }
+  .child__item__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .parents-section {
   padding-left: 80px;
   padding-right: 80px;
@@ -1013,6 +1055,23 @@ html {
   width: 400px;
 }
 
+@media (max-width: 400px) {
+  .parents-section {
+    padding-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+  .parents-section__item {
+    gap: 24px;
+  }
+  .parents-section__item__fields {
+    gap: 16px;
+    width: 300px;
+  }
+}
 .save-button-section {
   padding-left: 80px;
   padding-right: 80px;
