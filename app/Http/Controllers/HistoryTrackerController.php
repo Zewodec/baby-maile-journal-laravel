@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -10,46 +11,6 @@ class HistoryTrackerController extends Controller
     function historyTrackerPage()
     {
         $user = auth()->user();
-
-        // i need to get category, what have been done, time, and group by date
-//        $history = $user->children->where('id', $user->selected_children_id)->load([
-//            'son',
-//            'progulyanka',
-//            'zrostanya',
-//            'chasGri',
-//            'pidguznik',
-//            'zcidjuvanya',
-//            'godivanyaGrudy',
-//            'goduvanyaPlashechka',
-//            'goduvanyaTverda',
-//            'likyZdorovya',
-//            'symptomesZdorovya',
-//            'temperatureZdorovya',
-//        ]);
-
-//        $sons = $user->children->where('id', $user->selected_children_id)->first()->son;
-//
-//        $progulyankas = $user->children->where('id', $user->selected_children_id)->first()->progulyanka;
-//
-//        $zrostanyas = $user->children->where('id', $user->selected_children_id)->first()->zrostanya;
-//
-//        $chasGris = $user->children->where('id', $user->selected_children_id)->first()->chasGri;
-//
-//        $pidguzniks = $user->children->where('id', $user->selected_children_id)->first()->pidguznik;
-//
-//        $zcidjuvanyas = $user->children->where('id', $user->selected_children_id)->first()->zcidjuvanya;
-//
-//        $godivanyaGrudys = $user->children->where('id', $user->selected_children_id)->first()->godivanyaGrudy;
-//
-//        $goduvanyaPlashechkas = $user->children->where('id', $user->selected_children_id)->first()->goduvanyaPlashechka;
-//
-//        $goduvanyaTverdas = $user->children->where('id', $user->selected_children_id)->first()->goduvanyaTverda;
-//
-//        $likyZdorovyas = $user->children->where('id', $user->selected_children_id)->first()->likyZdorovya;
-//
-//        $symptomesZdorovyas = $user->children->where('id', $user->selected_children_id)->first()->symptomesZdorovya;
-//
-//        $temperatureZdorovyas = $user->children->where('id', $user->selected_children_id)->first()->temperatureZdorovya;
 
 
         $child = $user->children->where('id', $user->selected_children_id)->first();
@@ -156,22 +117,20 @@ class HistoryTrackerController extends Controller
             ];
         }));
 
-// Групуємо події за датою
+        // Групуємо події за датою
         $groupedEvents = $events->groupBy('date')->sortDesc();
+
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
 
         return view('trackers.nemovlya.history', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string ?? null,
             'groupedEvents' => $groupedEvents,
         ]);
     }
