@@ -59,11 +59,12 @@ Route::prefix('/family')->name('family.')->controller(FamilyController::class)->
     Route::delete('/delete-child/{id}', 'deleteChild')->name('delete_child')->middleware('auth');
 
     Route::post('/add-child', 'addChild')->name('add_child')->middleware('auth');
-    //TODO: Save info about childrens and parents
+    Route::get('/delete-child/{child_id}', 'deleteChild')->name('delete_child')->middleware('auth');
+
 
     Route::post('/save-parents', 'saveParents')->name('save_parents')->middleware('auth');
 
-    //TODO: Changing password
+
 });
 
 Route::prefix('/rozvytok-dytyny')->name('rozvytok-dytyny.')->controller(RozvytokDytynyController::class)->group(function () {

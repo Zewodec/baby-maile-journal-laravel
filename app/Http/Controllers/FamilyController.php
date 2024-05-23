@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Parents;
+use App\Models\Settings;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
@@ -51,10 +53,31 @@ class FamilyController extends Controller
         $child->name = $request->child_name;
         $child->surname = $request->child_surname;
         $child->sex = $request->sex;
-        $child->birthday = $request->birthday;
-        $child->vagitnist_date = $request->vagitnist_date;
         $child->user_id = \auth()->id();
         $child->save();
+
+
+        $pology_date = $request->birthday;
+        $data_zachatya = $request->vagitnist_date;
+
+        if ($data_zachatya !== null){
+            $start_last_menstruation = Carbon::parse($data_zachatya)->addDay(14)->format('Y-m-d');
+            $alusherskiy_termin = Carbon::parse($data_zachatya)->addDay(280)->format('Y-m-d');
+        } else if ($pology_date !== null){
+            $start_last_menstruation = Carbon::parse($pology_date)->addMonth(3)->subDay(7)->subYear(1)->format('Y-m-d');
+            $alusherskiy_termin = Carbon::parse($pology_date)->addDay(280)->format('Y-m-d');
+        }
+
+
+        $settings = new Settings([
+            'user_id' => \auth()->id(),
+            'child_id' => $child->id,
+            'start_last_menstruation' =>$start_last_menstruation,
+            'pology_date' => $pology_date,
+            'alusherskiy_termin' => $alusherskiy_termin,
+            'data_zachatya' => $data_zachatya,
+        ]);
+
 
         return redirect()->route('family.index');
     }
@@ -68,13 +91,14 @@ class FamilyController extends Controller
         return redirect()->route('family.index');
     }
 
-//    public function deleteChild($id)
-//    {
-//        $child = Child::find($id);
-//        $child->delete();
-//
-//        return redirect()->route('family.index');
-//    }
+    public function deleteChild($child_id)
+    {
+        $child = Child::find($child_id);
+
+        $child->delete();
+
+        return redirect()->route('family.index');
+    }
 
     public function saveParents(Request $request)
     {

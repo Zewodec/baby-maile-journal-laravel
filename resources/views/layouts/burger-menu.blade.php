@@ -65,8 +65,8 @@
                 </div>
                 </a>
                 <div class="selected-child__action-buttons">
-                    <button class="selected-child__select-btn"><img src="{{URL::asset('images/edit.svg')}}"/></button>
-                    <button class="selected-child__select-btn"><img src="{{URL::asset('images/black-hrest.svg')}}"/></button>
+{{--                    <button class="selected-child__select-btn"><img src="{{URL::asset('images/edit.svg')}}"/></button>--}}
+                    <a href="{{ route('family.delete_child', ['child_id' => $child->id]) }}" class="selected-child__select-btn"><img src="{{URL::asset('images/black-hrest.svg')}}"/></a>
                 </div>
             </div>
         @endforeach

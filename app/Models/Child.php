@@ -25,12 +25,12 @@ class Child extends Model
 
     public function getBirthday()
     {
-        return $this->settings()->first()->pology_date;
+        return $this->settings()->first()->pology_date ?? null;
     }
 
     public function getDataZachatya()
     {
-        return $this->settings()->first()->data_zachatya;
+        return $this->settings()->first()->data_zachatya ?? null;
     }
 
     public function user()
