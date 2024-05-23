@@ -34,12 +34,12 @@
 
             <div class="tracker-vagitnosti-section__item__text-group__info">
                 <p class="tracker-vagitnosti-section__item__text-group__info__head">Сьогодні зафіксовано</p>
-                <p class="tracker-vagitnosti-section__item__text-group__info__text">0 поштовхів</p>
+                <p class="tracker-vagitnosti-section__item__text-group__info__text">{{$poshtovhs_amount ?? 0}} поштовхів</p>
             </div>
 
             <div class="tracker-vagitnosti-section__item__text-group__info">
                 <p class="tracker-vagitnosti-section__item__text-group__info__head">Тривалість</p>
-                <p class="tracker-vagitnosti-section__item__text-group__info__text">00:00:00</p>
+                <p class="tracker-vagitnosti-section__item__text-group__info__text">{{$poshtovhs_trivalist ?? "00:00:00"}}</p>
             </div>
         </div>
         <img class="tracker-vagitnosti-section__item__text-group__image" src="{{URL::asset('images/rozvitok-dytyny/vagitnist.png')}}"

@@ -13,7 +13,11 @@ class VagaTrackerController extends Controller
         $user = auth()->user();
         $vaga_data = $user->vagitnistVagas()->where('children_id', $user->selected_children_id)->orderBy('date', 'desc')->get();
 
+        $children_age_string = Child::find($user->selected_children_id);
 
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
 
         return view('trackers.vagitnist.vaga', [
             'vaga_data' => $vaga_data,
