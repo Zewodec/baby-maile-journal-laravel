@@ -146,6 +146,7 @@ Route::prefix('/calendar')->name('calendar.')->controller(CalendarController::cl
 
 Route::get('/settings', [SettingsController::class, 'settingsPage'])->name('settings')->middleware('auth');
 Route::post('/settings/save', [SettingsController::class, 'settingsSaveInfo'])->name('settings.save')->middleware('auth');
+Route::get('/settings/deleteMe', [SettingsController::class, 'deleteMe'])->name('settings.deleteMe')->middleware('auth');
 
 Route::get('/speaking-forum', [SpeakingForumController::class, 'speakingForumPage'])->name('speaking_forum');
 //Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {

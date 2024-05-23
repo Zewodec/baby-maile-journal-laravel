@@ -54,4 +54,12 @@ class SettingsController extends Controller
 
         return redirect()->route('settings');
     }
+
+    function deleteMe()
+    {
+        $user = auth()->user();
+        auth()->logout();
+        $user->delete();
+        return redirect()->route('index');
+    }
 }
