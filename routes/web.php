@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActualInfoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalendarController;
@@ -126,6 +127,11 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
 
     });
 });
+
+Route::prefix('/actual_information')->name('actual_info.')->controller(ActualInfoController::class)->group(function () {
+    Route::get('/', 'actualInfoPage')->name('index');
+
+})->middleware('auth');
 
 Route::prefix('/important_events')->name('important_events.')->controller(ImportantEventsController::class)->group(function () {
     Route::get('/', 'eventsPage')->name('index');

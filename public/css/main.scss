@@ -2360,3 +2360,47 @@ html {
     gap: 24px;
     justify-content: flex-end;
 }
+
+.ai-section {
+    @include padding-horizontal;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    // .menu__item
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 24px;
+        row-gap: 18px;
+
+        background-color: $Khaki-color;
+        border-radius: 20px;
+        padding: 18px 24px;
+        width: 500px;
+
+        // .menu__item__text
+        &__text {
+            color: #FFF9F4;
+            text-align: justify;
+            font-family: "Parangon 510C", serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        // .menu__item__img
+        &__img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}

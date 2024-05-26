@@ -31,7 +31,7 @@
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
-                <a href="#">Актуальна інформація</a>
+                <a href="{{route('actual_info.index')}}">Актуальна інформація</a>
             </li>
             <li>
                 <img src="{{URL::asset('images/lapa-icon2.svg')}}"/>
