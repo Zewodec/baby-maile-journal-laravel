@@ -2404,3 +2404,51 @@ html {
         }
     }
 }
+
+.cl-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.cl-section2 {
+    @include padding-horizontal;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.text-bg-line {
+    margin-top: 14px;
+    background-color: $Khaki-color;
+    color: #FFF9F4;
+    text-align: center;
+    font-family: "Parangon 510C", serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 12px 0;
+}
+
+.list-item-text {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.cl-main-text {
+    color: #BDABA2;
+    text-align: justify;
+    font-family: "Parangon 510C", serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+}

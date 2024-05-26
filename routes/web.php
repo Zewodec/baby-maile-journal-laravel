@@ -131,6 +131,15 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
 Route::prefix('/actual_information')->name('actual_info.')->controller(ActualInfoController::class)->group(function () {
     Route::get('/', 'actualInfoPage')->name('index');
 
+    Route::get('/check-list', 'checkListPage')->name('check_list');
+    Route::get('/vpravy', 'vpravyPage')->name('vpravy');
+    Route::get('/poshtovhs', 'poshtovhsPage')->name('poshtovhs');
+    Route::get('/goduvanya', 'goduvanyaPage')->name('goduvanya');
+    Route::get('/fiz-psych-rozv-dytyny', 'fizPsychRozvDytynyPage')->name('fiz_psych_rozv_dytyny');
+    Route::get('/doglyad', 'doglyadPage')->name('doglyad');
+    Route::get('/vpravy-dity', 'vpravyDityPage')->name('vpravy_dity');
+    Route::get('/odyag', 'odyagPage')->name('odyag');
+
 })->middleware('auth');
 
 Route::prefix('/important_events')->name('important_events.')->controller(ImportantEventsController::class)->group(function () {
