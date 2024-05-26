@@ -60,7 +60,9 @@
                 <div class="selected-child__text">
                     <p>{{$child->name}}</p>
                     @if(isset($child->settings->pology_date))
-                    <p style="font-size: 32px;">({{$child->settings->pology_date}})</p>
+                        <p style="font-size: 32px;">({{ floor(\Carbon\Carbon::parse($child->settings->pology_date)->diffInYears(now())) }} років {{ floor(\Carbon\Carbon::parse($child->settings->pology_date)->diffInMonths(now()) - floor(\Carbon\Carbon::parse($child->settings->pology_date)->diffInYears(now())) * 12) }} місяців)</p>
+                    @elseif(isset($child->settings->data_zachatya))
+                        <p style="font-size: 32px;">({{floor(\Carbon\Carbon::parse($child->settings->data_zachatya)->diffInWeeks(now()))}} тижнів)</p>
                     @endif
                 </div>
                 </a>
