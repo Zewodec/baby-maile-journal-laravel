@@ -54,7 +54,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.vpravy',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
@@ -72,7 +72,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.poshtovhs',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
