@@ -974,6 +974,22 @@ html {
 }
 
 @media (max-width: 400px) {
+  .main-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .user-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .children-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .parents-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .user-section {
     gap: 20px;
   }
