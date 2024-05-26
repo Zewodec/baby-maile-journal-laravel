@@ -90,7 +90,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.goduvanya',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
@@ -108,7 +108,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.fizPsychRozvDytyny',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
@@ -126,7 +126,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.doglyad',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
@@ -144,7 +144,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.vpravyDity',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
@@ -162,7 +162,7 @@ class ActualInfoController extends Controller
             $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
-        return view('pages.actual_information.ai_menu',[
+        return view('pages.actual_information.odyag',[
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
