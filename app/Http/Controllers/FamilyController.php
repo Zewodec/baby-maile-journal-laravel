@@ -72,10 +72,10 @@ class FamilyController extends Controller
         $settings = new Settings([
             'user_id' => \auth()->id(),
             'child_id' => $child->id,
-            'start_last_menstruation' => $start_last_menstruation,
-            'pology_date' => $pology_date,
-            'alusherskiy_termin' => $alusherskiy_termin,
-            'data_zachatya' => $data_zachatya,
+            'start_last_menstruation' => $start_last_menstruation ?? null,
+            'pology_date' => $pology_date ?? null,
+            'alusherskiy_termin' => $alusherskiy_termin ?? null,
+            'data_zachatya' => $data_zachatya ?? null,
         ]);
 
 
@@ -142,8 +142,6 @@ class FamilyController extends Controller
     {
         $user = \auth()->user();
 
-        $parents = $user->parents->where('user_id', $user->id);
-
         $parent_1_first_name = $request->parent_1_first_name;
         $parent_1_last_name = $request->parent_1_last_name;
 //        $parent_1_image = $request->parent_1_image;
@@ -152,7 +150,10 @@ class FamilyController extends Controller
         $parent_2_last_name = $request->parent_2_last_name;
 //        $parent_2_image = $request->parent_2_image;
 
+        $parents = $user->parents;
+
         if ($parents !== null) {
+            $parents = $parents->where('user_id', $user->id);
             $parents = $parents->first();
             $parents->parent_1_first_name = $parent_1_first_name;
             $parents->parent_1_last_name = $parent_1_last_name;
