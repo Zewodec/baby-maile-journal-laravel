@@ -30,11 +30,13 @@ class RozvytokDytynyController extends Controller
     {
         $user = auth()->user();
 
-        $child_settings = Child::find($user->selected_children_id)->settings->first();
+        $child_settings = Child::find($user->selected_children_id)->settings;
         $child_zachatya = Carbon::parse($child_settings->data_zachatya);
         $week_difference = round($child_zachatya->diffInWeeks(now()));
         $day_difference = round($child_zachatya->diffInDays(now()));
-        $days_without_weeks = $day_difference - ($week_difference * 7);
+        $days_without_weeks = ($week_difference * 7) - $day_difference;
+
+//        dd($user->selected_children_id, $child_settings,$child_settings->data_zachatya, $week_difference, $day_difference, $days_without_weeks);
 
         $current_week = $week_difference . ' тиждень ' . $days_without_weeks . ' дні';
 
