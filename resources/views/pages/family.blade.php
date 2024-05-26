@@ -50,7 +50,11 @@
     <form class="parents-section" action="{{route('family.save_parents')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="parents-section__item">
+            @if(isset($parents))
             <img class="family-image" src="{{url('storage/' . $parents['parent_1_image'])}}" alt="parent avatar" id="parent_1_image"/>
+            @else
+                <img class="family-image" src="{{url('storage/' . 'parent_images/parent-avatar.png')}}" alt="parent avatar" id="parent_1_image"/>
+            @endif
             <input name="parent_1_image" type="file" hidden id="parent_1_image_input">
             <div class="parents-section__item__fields">
                 <input name="parent_1_first_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_1_first_name'] ?? null}}">
@@ -59,7 +63,11 @@
         </div>
 
         <div class="parents-section__item">
-            <img class="family-image" src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar" id="parent_2_image"/>
+            @if(isset($parents))
+                <img class="family-image" src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar" id="parent_2_image"/>
+            @else
+                <img class="family-image" src="{{url('storage/' . 'parent_images/parent-avatar.png')}}" alt="parent avatar" id="parent_1_image"/>
+            @endif
             <input name="parent_2_image" type="file" hidden id="parent_2_image_input">
             <div class="parents-section__item__fields">
                 <input name="parent_2_first_name" class="input-text" type="text" placeholder="Ім'я одного з батьків" value="{{$parents['parent_2_first_name']  ?? null}}">
