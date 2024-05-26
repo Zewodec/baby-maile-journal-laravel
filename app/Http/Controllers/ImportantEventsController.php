@@ -17,7 +17,7 @@ class ImportantEventsController extends Controller
         $children_age_string = Child::find($user->selected_children_id);
 
         if ($children_age_string !== null) {
-            $children_age_string = $children_age_string->getBirthday();
+            $children_age_string = Child::find($user->selected_children_id)->getBirthday();
         }
 
         return view('pages.important_events.events', [

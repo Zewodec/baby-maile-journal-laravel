@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use App\Models\Son;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,19 +26,17 @@ class SonTrackerController extends Controller
         }
 
 
+        $children_age_string = Child::find($user->selected_children_id);
+
+        if ($children_age_string !== null) {
+            $children_age_string = $children_age_string->getBirthday();
+        }
+
         return view('trackers.nemovlya.son', [
             'user' => $user,
             'children' => $user->children,
             'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
-            'children_age_string' => $user->children->where('id', $user->selected_children_id)->first()->pluck('birthday')->map(function ($item) {
-                    if ($item !== null) {
-                        $month_diference = $item->diffInMonths(now());
-
-                        $text_difference = round($month_diference). "m";
-                        return $text_difference;
-                    }
-                    return null;
-                })->first() ?? null,
+            'children_age_string' => $children_age_string,
             'today_minutes' => $today_minutes,
         ]);
     }
