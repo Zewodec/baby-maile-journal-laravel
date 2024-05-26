@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
+            $table->string('child_image')->nullable();
             $table->enum('sex', ['male', 'female', 'null'])->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });

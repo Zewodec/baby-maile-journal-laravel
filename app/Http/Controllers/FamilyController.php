@@ -14,7 +14,7 @@ class FamilyController extends Controller
     {
         $user = \auth()->user();
 
-        if ($user == null){
+        if ($user == null) {
             redirect('/');
         }
 
@@ -23,8 +23,8 @@ class FamilyController extends Controller
             // select first child if user has children
             $children = $user->children->first();
             if ($user->selected_children_id !== null) {
-            $user->selected_children_id = $children->id;
-            $user->save();
+                $user->selected_children_id = $children->id;
+                $user->save();
             }
         }
 
@@ -41,7 +41,7 @@ class FamilyController extends Controller
             [
                 'user' => $user,
                 'children' => $user->children,
-                'children_name'=> $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
+                'children_name' => $user->children->where('id', $user->selected_children_id)->first()->name ?? null,
                 'children_age_string' => $children_age_string,
                 'parents' => $parents,
             ]);
@@ -60,10 +60,10 @@ class FamilyController extends Controller
         $pology_date = $request->birthday;
         $data_zachatya = $request->vagitnist_date;
 
-        if ($data_zachatya !== null){
+        if ($data_zachatya !== null) {
             $start_last_menstruation = Carbon::parse($data_zachatya)->addDay(14)->format('Y-m-d');
             $alusherskiy_termin = Carbon::parse($data_zachatya)->addDay(280)->format('Y-m-d');
-        } else if ($pology_date !== null){
+        } else if ($pology_date !== null) {
             $start_last_menstruation = Carbon::parse($pology_date)->addMonth(3)->subDay(7)->subYear(1)->format('Y-m-d');
             $alusherskiy_termin = Carbon::parse($pology_date)->addDay(280)->format('Y-m-d');
         }
@@ -72,12 +72,50 @@ class FamilyController extends Controller
         $settings = new Settings([
             'user_id' => \auth()->id(),
             'child_id' => $child->id,
-            'start_last_menstruation' =>$start_last_menstruation,
+            'start_last_menstruation' => $start_last_menstruation,
             'pology_date' => $pology_date,
             'alusherskiy_termin' => $alusherskiy_termin,
             'data_zachatya' => $data_zachatya,
         ]);
 
+
+        return redirect()->route('family.index');
+    }
+
+    public function saveChildInfo(Request $request)
+    {
+        $child_name = $request->child_name;
+        $child_surname = $request->child_surname;
+        $child_birthday = $request->child_birthday;
+        $child_sex = $request->child_sex;
+        $child_id = $request->child_id;
+//        child_image
+
+        $child = Child::find($child_id);
+
+        if ($child !== null) {
+            $child->name = $child_name;
+            $child->surname = $child_surname;
+            $child->sex = $child_sex;
+
+            if ($request->file('child_image')) {
+                $child->child_image = $request->file('child_image')->store('child_images', 'public');
+            }
+
+            $child_settings = $child->settings;
+            if (isset($child_settings)) {
+                $child_settings->pology_date = $child_birthday;
+                $child_settings->save();
+            } else{
+                $child_settings = new Settings();
+                $child_settings->child_id = $child_id;
+                $child_settings->user_id = \auth()->id();
+                $child_settings->pology_date = $child_birthday;
+                $child_settings->save();
+
+            }
+            $child->save();
+        }
 
         return redirect()->route('family.index');
     }
@@ -114,7 +152,7 @@ class FamilyController extends Controller
         $parent_2_last_name = $request->parent_2_last_name;
 //        $parent_2_image = $request->parent_2_image;
 
-        if ($parents !== null){
+        if ($parents !== null) {
             $parents = $parents->first();
             $parents->parent_1_first_name = $parent_1_first_name;
             $parents->parent_1_last_name = $parent_1_last_name;
@@ -130,7 +168,7 @@ class FamilyController extends Controller
             }
 
             $parents->save();
-        } else{
+        } else {
             $parents = new Parents();
             $parents->user_id = $user->id;
             $parents->parent_1_first_name = $parent_1_first_name;

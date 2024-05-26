@@ -22,8 +22,14 @@
         <button id="add-child-button" class="action-button2">+ додати дитину</button>
 
         @foreach($children as $child)
-            <div class="child__item">
-                <img src="{{URL::asset('images/child-avatar.png')}}"/>
+            <form class="child__item" method="post" action="{{route('family.save_child')}}" enctype="multipart/form-data">
+                @csrf
+                @if($child['child_image'])
+                    <img class="family-image" src="{{url('storage/' . $child['child_image'])}}" id="child_image"/>
+                @else
+                    <img class="family-image" src="{{URL::asset('images/child-avatar.png')}}" id="child_image"/>
+                @endif
+                <input type="file" hidden name="child_image" id="child_image_input">
                 <div class="child__item__fields">
                     <input name="child_name" class="input-text" type="text" placeholder="Ім'я дитини" value="{{$child['name']}}">
                     <input name="child_surname" class="input-text" type="text" placeholder="Прізвище дитини" value="{{$child['surname']}}">
@@ -33,7 +39,11 @@
                         <option value="female" @if($child['sex']=='female') selected @endif>Жіноча</option>
                     </select>
                 </div>
-            </div>
+                <input type="hidden" name="child_id" value="{{$child['id']}}">
+                <div class="save-button-section">
+                    <button class="action-button2">Зберегти дані</button>
+                </div>
+            </form>
         @endforeach
     </section>
 
@@ -44,6 +54,24 @@
         addChildButton.addEventListener('click', function() {
             const dialog = document.getElementById('add-child-dialog');
             dialog.showModal();
+        });
+
+        const childImages = document.querySelectorAll('#child_image');
+        const childImageInputs = document.querySelectorAll('#child_image_input');
+
+        childImages.forEach((childImage, index) => {
+            childImage.addEventListener('click', function() {
+                childImageInputs[index].click();
+            });
+
+            childImageInputs[index].addEventListener('change', function() {
+                const file = childImageInputs[index].files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    childImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
         });
     </script>
 
@@ -111,10 +139,6 @@
             reader.readAsDataURL(file);
         });
     </script>
-
-    <div class="save-button-section">
-        <button class="action-button2">Зберегти дані</button>
-    </div>
 
 @endsection
 

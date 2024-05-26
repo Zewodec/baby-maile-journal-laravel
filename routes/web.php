@@ -61,10 +61,8 @@ Route::prefix('/family')->name('family.')->controller(FamilyController::class)->
     Route::post('/add-child', 'addChild')->name('add_child')->middleware('auth');
     Route::get('/delete-child/{child_id}', 'deleteChild')->name('delete_child')->middleware('auth');
 
-
     Route::post('/save-parents', 'saveParents')->name('save_parents')->middleware('auth');
-
-
+    Route::post('/save-child', 'saveChildInfo')->name('save_child')->middleware('auth');
 });
 
 Route::prefix('/rozvytok-dytyny')->name('rozvytok-dytyny.')->controller(RozvytokDytynyController::class)->group(function () {
