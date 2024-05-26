@@ -66,7 +66,7 @@
             @if(isset($parents))
                 <img class="family-image" src="{{url('storage/' . $parents['parent_2_image'])}}" alt="parent avatar" id="parent_2_image"/>
             @else
-                <img class="family-image" src="{{url('storage/' . 'parent_images/parent-avatar.png')}}" alt="parent avatar" id="parent_1_image"/>
+                <img class="family-image" src="{{url('storage/' . 'parent_images/parent-avatar.png')}}" alt="parent avatar" id="parent_2_image"/>
             @endif
             <input name="parent_2_image" type="file" hidden id="parent_2_image_input">
             <div class="parents-section__item__fields">

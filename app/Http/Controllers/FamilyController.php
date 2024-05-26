@@ -104,7 +104,7 @@ class FamilyController extends Controller
     {
         $user = \auth()->user();
 
-        $parents = $user->parents->first();
+        $parents = $user->parents->where('user_id', $user->id);
 
         $parent_1_first_name = $request->parent_1_first_name;
         $parent_1_last_name = $request->parent_1_last_name;
@@ -115,14 +115,19 @@ class FamilyController extends Controller
 //        $parent_2_image = $request->parent_2_image;
 
         if ($parents !== null){
+            $parents = $parents->first();
             $parents->parent_1_first_name = $parent_1_first_name;
             $parents->parent_1_last_name = $parent_1_last_name;
 
-            $parents->parent_1_image = $request->file('parent_1_image') ? $request->file('parent_1_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+            if ($request->file('parent_1_image')) {
+                $parents->parent_1_image = $request->file('parent_1_image')->store('parent_images', 'public');
+            }
 
             $parents->parent_2_first_name = $parent_2_first_name;
             $parents->parent_2_last_name = $parent_2_last_name;
-            $parents->parent_2_image = $request->file('parent_2_image') ? $request->file('parent_2_image')->store('parent_images', 'public') : 'parent_images/parent-avatar.png';
+            if ($request->file('parent_2_image')) {
+                $parents->parent_2_image = $request->file('parent_2_image')->store('parent_images', 'public');
+            }
 
             $parents->save();
         } else{
