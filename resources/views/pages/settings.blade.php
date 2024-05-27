@@ -67,8 +67,10 @@
                         akusherskiy_termin_value.setDate(akusherskiy_termin_value.getDate() + 280);
                         akusherskiy_termin.value = akusherskiy_termin_value.toISOString().split('T')[0];
 
+
                         let data_zachatya_value = last_menstruation_value;
-                        data_zachatya_value.setDate(data_zachatya_value.getDate() - 14);
+                        data_zachatya_value.setMonth(data_zachatya_value.getMonth() + 3);
+                        data_zachatya_value.setDate(data_zachatya_value.getDate() - 18);
                         data_zachatya.value = data_zachatya_value.toISOString().split('T')[0];
                     });
 
@@ -84,7 +86,7 @@
                         pology_date.value = pology_date_value.toISOString().split('T')[0];
 
                         let data_zachatya_value = last_menstruation_value;
-                        data_zachatya_value.setDate(data_zachatya_value.getDate() - 14);
+                        data_zachatya_value.setDate(data_zachatya_value.getDate() - 14 - 7);
                         data_zachatya.value = data_zachatya_value.toISOString().split('T')[0];
                     });
 
@@ -100,7 +102,7 @@
                         pology_date.value = pology_date_value.toISOString().split('T')[0];
 
                         let akusherskiy_termin_value = last_menstruation_value;
-                        akusherskiy_termin_value.setDate(akusherskiy_termin_value.getDate() + 280);
+                        akusherskiy_termin_value.setDate(akusherskiy_termin_value.getDate() - 2);
                         akusherskiy_termin.value = akusherskiy_termin_value.toISOString().split('T')[0];
                     });
                 </script>
