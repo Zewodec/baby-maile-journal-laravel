@@ -7,64 +7,64 @@
 <h1 class="h1_anastasia text-center">Історія</h1>
 
 <div class="trackers-baby-group_history">
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history")}}">
         <p class="trackers-baby-group__item__text_history">Все</p>
-    </button>
-    <button class="trackers-baby-group__item_history">
+    </a>
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.goduvanya")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/goduvanya.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Годування</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.zcidjuvanya")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/zcidguvanya.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Зціджування</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.pidguznik")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/piguznik.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Підгузник</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.son")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/son.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Сон</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.chasGri")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/chas-play.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Час гри</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.zdorovya")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/zdorovya.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Здоров’я</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.zrostanya")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/zrostanya.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Зростання</p>
 
-    </button>
+    </a>
 
-    <button class="trackers-baby-group__item_history">
+    <a class="trackers-baby-group__item_history" href="{{route("trackers.nemovlya.history.progulyanka")}}">
 
         <img class="trackers-baby-group__item__image_history" src="{{URL::asset('images/trackers/progulyanka.svg')}}"/>
         <p class="trackers-baby-group__item__text_history">Прогулянка</p>
 
-    </button>
+    </a>
 
 </div>
 

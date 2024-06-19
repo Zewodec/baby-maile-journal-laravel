@@ -123,7 +123,17 @@ Route::prefix('/trackers')->name('trackers.')->controller(TrackersController::cl
         Route::get('/progulyanka', [ProgulyankaTrackerController::class,'progulyankaTrackerPage'])->name('progulyanka')->middleware('auth');
         Route::post('/progulyanka/save', [ProgulyankaTrackerController::class,'traclProgulyanka'])->name('progulyanka.save')->middleware('auth');
 
-        Route::get('/history', [HistoryTrackerController::class,'historyTrackerPage'])->name('history')->middleware('auth');
+        Route::prefix('/history')->name('history')->group(function () {
+            Route::get('/', [HistoryTrackerController::class,'historyTrackerPage'])->name('')->middleware('auth');
+            Route::get('/goduvanya', [HistoryTrackerController::class,'historyGoduvanyaTrackerPage'])->name('.goduvanya')->middleware('auth');
+            Route::get('/zcidjuvanya', [HistoryTrackerController::class,'historyZcidjuvanyaTrackerPage'])->name('.zcidjuvanya')->middleware('auth');
+            Route::get('/pidguznik', [HistoryTrackerController::class,'historyPidguznikTrackerPage'])->name('.pidguznik')->middleware('auth');
+            Route::get('/son', [HistoryTrackerController::class,'historySonTrackerPage'])->name('.son')->middleware('auth');
+            Route::get('/chasGri', [HistoryTrackerController::class,'historyChasGriTrackerPage'])->name('.chasGri')->middleware('auth');
+            Route::get('/zdorovya', [HistoryTrackerController::class,'historyZdorovyaTrackerPage'])->name('.zdorovya')->middleware('auth');
+            Route::get('/zrostanya', [HistoryTrackerController::class,'historyZrostanyaTrackerPage'])->name('.zrostanya')->middleware('auth');
+            Route::get('/progulyanka', [HistoryTrackerController::class,'historyProgulyankaTrackerPage'])->name('.progulyanka')->middleware('auth');
+        });
 
     });
 });
