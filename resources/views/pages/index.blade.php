@@ -9,8 +9,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
-
+<!-- Button to trigger modal (Eye SVG inside a button element) -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#settingsModal"
+        style="background: gray; border: none;">
+    <!-- Eye SVG Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye"
+         viewBox="0 0 16 16">
+        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.07-.122.146-.195.23a13.133 13.133 0 0 1-1.66 2.043C11.879 11.332 10.12 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.133 13.133 0 0 1 1.172 8z"/>
+        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+    </svg>
+</button>
 @include('layouts.header-nav')
+
+@include('helping-modal')
 
 <div class="introduction">
     <div class="introduction__left">
@@ -278,7 +289,49 @@
 </section>
 
 @include('layouts.footer')
+<!-- Custom Script to Handle Font Size Adjustments and Colorblind Mode -->
+<script>
+    // Function to adjust font size for individual elements
+    function adjustFontSize(action) {
+        // Select all text elements where font size should be adjusted
+        const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li'); // Add or modify as needed
 
+        elements.forEach(function (element) {
+            const currentFontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            const currentSize = parseFloat(currentFontSize);
+
+            if (action === 'increase') {
+                element.style.fontSize = (currentSize + 1) + 'px';
+            } else if (action === 'decrease') {
+                element.style.fontSize = (currentSize - 1) + 'px';
+            }
+        });
+    }
+
+    // Function to apply colorblind mode and persist settings
+    function applySettings() {
+        const isColorblind = document.getElementById('colorblindMode').checked;
+
+        if (isColorblind) {
+            document.body.classList.add('colorblind-friendly');
+        } else {
+            document.body.classList.remove('colorblind-friendly');
+        }
+
+        // Persist settings using localStorage
+        localStorage.setItem('colorblindMode', isColorblind ? 'enabled' : 'disabled');
+    }
+
+    // Apply saved colorblind mode on page load
+    window.onload = function () {
+        const savedColorblindMode = localStorage.getItem('colorblindMode');
+
+        if (savedColorblindMode === 'enabled') {
+            document.body.classList.add('colorblind-friendly');
+            document.getElementById('colorblindMode').checked = true;
+        }
+    }
+</script>
 <script src="{{URL::asset('js/faq.js')}}"></script>
 <script src="{{URL::asset('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js')}}"></script>
 <script src="{{URL::asset('js/feedback-swiper.js')}}"></script>
