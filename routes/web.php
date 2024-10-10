@@ -21,8 +21,9 @@ use App\Http\Controllers\VagaTrackerController;
 use App\Http\Controllers\ZcidjuvanyaTrackerController;
 use App\Http\Controllers\ZdorovyaTrackerController;
 use App\Http\Controllers\ZrostanyaTrackerController;
-//use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+//use Illuminate\Support\Facades\Auth;
 
 
 //Auth::routes();
@@ -33,7 +34,7 @@ Route::get('/', function () {
 })->name('index');
 
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function () {
-    Route::get('/', 'authPage');
+    Route::get('/', 'authPage')->name('page');
     Route::post('/register', 'register')->name('register');
     Route::post('/login', 'login')->name('login');
     Route::get('/logout', 'logout')->name('logout')->middleware('auth');
