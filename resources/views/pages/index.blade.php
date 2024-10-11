@@ -22,7 +22,7 @@
         <p class="introduction__left__text">
             Найкращий веб-сайт для відстеження вагітності та моніторингу розвитку та здоров'я вашого малюка.
         </p>
-        <a href="{{route('auth.')}}" class="action-button">Почнімо!</a>
+        <a href="{{route('auth.page')}}" class="action-button">Почнімо!</a>
     </div>
 
     <div class="introduction__right">
