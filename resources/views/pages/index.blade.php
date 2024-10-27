@@ -380,5 +380,11 @@
 <script src="{{URL::asset('js/faq.js')}}"></script>
 <script src="{{URL::asset('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js')}}"></script>
 <script src="{{URL::asset('js/feedback-swiper.js')}}"></script>
+
+<script
+        src="https://app.livechatai.com/embed.js"
+        data-id="cm2s4m4i60001748vidd9dqlm"
+        async defer>
+</script>
 </body>
 </html>
